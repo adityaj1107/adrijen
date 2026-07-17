@@ -65,17 +65,42 @@
   document.querySelectorAll('[data-tabs]').forEach(group => {
     const buttons = group.querySelectorAll('.tab-btn');
     const panels  = group.querySelectorAll('[data-panel]');
+    const searchInput = group.querySelector('[data-product-search-input]');
+    const emptyNote = group.querySelector('[data-product-empty]');
+    let activeTab = 'all';
+
+    const applyFilters = () => {
+      const q = (searchInput && searchInput.value || '').trim().toLowerCase();
+      let visibleCount = 0;
+      panels.forEach(p => {
+        const tabMatch = activeTab === 'all' || p.dataset.panel === activeTab;
+        const searchMatch = !q || (p.dataset.search || '').includes(q);
+        const match = tabMatch && searchMatch;
+        p.style.display = match ? '' : 'none';
+        if (match) { p.classList.add('fade-in'); visibleCount++; }
+      });
+      if (emptyNote) emptyNote.classList.toggle('hidden', visibleCount !== 0);
+    };
+
     buttons.forEach(btn => {
       btn.addEventListener('click', () => {
-        const target = btn.dataset.tab;
+        activeTab = btn.dataset.tab;
         buttons.forEach(b => b.classList.toggle('active', b === btn));
-        panels.forEach(p => {
-          const match = p.dataset.panel === target || target === 'all';
-          p.style.display = match ? '' : 'none';
-          if (match) p.classList.add('fade-in');
-        });
+        applyFilters();
       });
     });
+
+    if (searchInput) {
+      searchInput.addEventListener('input', () => {
+        if (searchInput.value.trim() && activeTab !== 'all') {
+          activeTab = 'all';
+          buttons.forEach(b => b.classList.toggle('active', b.dataset.tab === 'all'));
+        }
+        applyFilters();
+      });
+    }
+
+    if (panels.length) applyFilters();
   });
 
   /* ---------- Year ---------- */

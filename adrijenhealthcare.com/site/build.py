@@ -18,15 +18,23 @@ CONTACT = {
     "phone_tel": "+918909392600",
     "whatsapp": "918909392600",
     "email": "md@adrijenhealthcare.com",
-    "address_line1": "Industrial Area Phase 1,",
-    "address_line2": "Panchkula, Haryana, India — 134109",
-    "maps_query": "Adrijen+Healthcare+Pvt+Ltd,+Industrial+Area+Phase+1,+Panchkula,+Haryana+134109",
-    "google_maps_url": "https://www.google.com/maps/search/Adrijen+Healthcare+Pvt+Ltd",
+    "address_line1": "Plot No. 115, Industrial Area Phase-1,",
+    "address_line2": "Panchkula, Haryana, India — 134113",
+    "maps_query": "Adrijen+Healthcare+Pvt+Ltd,+Plot+No+115,+Industrial+Area+Phase+1,+Panchkula,+Haryana+134113",
+    "google_maps_url": "https://www.google.com/maps/search/?api=1&query=Adrijen+Healthcare+Pvt+Ltd+Plot+No+115+Industrial+Area+Phase+1+Panchkula+Haryana+134113",
+    "gst": "06AABCN7847E1ZF",
+    "cin": "U21002PB2003PTC026377",
+    "dl_20b": "WLF20B2026HR001104",
+    "dl_21b": "WLF21B2026HR001102",
     "footer_blurb": (
-        "A Panchkula-based PCD pharma company running at full capacity — "
-        "supplying WHO-GMP medicines to distributors, wholesalers and chemists across India."
+        "A Panchkula-based PCD pharma company supplying WHO-GMP manufactured "
+        "medicines to distributors, wholesalers and chemists across India."
     ),
 }
+
+WHATSAPP_FLOAT = f"""<a href="https://wa.me/{CONTACT['whatsapp']}?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Adrijen%20Healthcare%27s%20products" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+  <i data-lucide="message-circle"></i>
+</a>"""
 
 # ---------- Shared <head> snippet (per-page title/desc/canonical injected) ----------
 HEAD_TEMPLATE = """<meta charset="utf-8" />
@@ -206,6 +214,8 @@ def assemble(meta_block: str, body_html: str) -> str:
         + HEADER
         + "\n"
         + body_html
+        + "\n"
+        + WHATSAPP_FLOAT
         + "\n"
         + FOOTER
     )
