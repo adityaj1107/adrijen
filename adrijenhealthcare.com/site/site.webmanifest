@@ -1,0 +1,14 @@
+{
+  "name": "Adrijen Healthcare Pvt. Ltd.",
+  "short_name": "Adrijen",
+  "description": "PCD pharma company supplying 250+ WHO-GMP manufactured formulations to distributors across India.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#1d7e62",
+  "icons": [
+    { "src": "/images/favicon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/images/favicon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
