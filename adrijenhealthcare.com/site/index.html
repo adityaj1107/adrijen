@@ -70,8 +70,16 @@
   "@type":"Organization",
   "name":"Adrijen Healthcare",
   "url":"https://adrijenhealthcare.com",
-  "logo":"https://adrijenhealthcare.com/images/logo.svg",
+  "logo":"https://adrijenhealthcare.com/images/logo.png",
   "description":"PCD pharma company supplying 250+ WHO-GMP certified formulations to distributors, wholesalers and chemists across India.",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Industrial Area Phase 1",
+    "addressLocality":"Panchkula",
+    "addressRegion":"Haryana",
+    "postalCode":"134109",
+    "addressCountry":"IN"
+  },
   "sameAs":[
     "https://www.facebook.com/",
     "https://www.linkedin.com/",
@@ -79,7 +87,8 @@
   ],
   "contactPoint":{
     "@type":"ContactPoint",
-    "telephone":"+91-00000-00000",
+    "telephone":"+91-8909392600",
+    "email":"md@adrijenhealthcare.com",
     "contactType":"customer service",
     "areaServed":"IN",
     "availableLanguage":["en","hi"]
@@ -90,6 +99,15 @@
 <body>
 
 <!-- ============== HEADER ============== -->
+<div class="contact-bar">
+  <div class="container-x flex flex-wrap items-center justify-between gap-2 py-2 text-sm">
+    <span class="flex items-center gap-2 font-medium"><span class="live-dot" aria-hidden="true"></span> Now onboarding distributors — pan-India dispatch active</span>
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-1">
+      <a href="tel:+918909392600" class="inline-flex items-center gap-1.5 hover:text-brand-100 transition-colors"><i data-lucide="phone" class="w-3.5 h-3.5"></i> +91-8909392600</a>
+      <a href="mailto:md@adrijenhealthcare.com" class="inline-flex items-center gap-1.5 hover:text-brand-100 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5"></i> md@adrijenhealthcare.com</a>
+    </div>
+  </div>
+</div>
 <header class="site-header">
   <div class="container-x flex items-center justify-between py-4">
     <a href="/" class="flex items-center group" aria-label="Adrijen Healthcare Pvt. Ltd. — Home">
@@ -162,49 +180,29 @@
     <div class="lg:col-span-5" data-aos="fade-left">
       <div class="relative">
         <div class="absolute -inset-4 bg-gradient-to-tr from-brand-300/40 to-blue-200/40 rounded-[36px] blur-2xl"></div>
-        <div class="relative rounded-[28px] bg-white border border-ink-100 shadow-2xl shadow-brand-900/10 p-6">
+        <div class="relative rounded-[28px] ops-card border border-ink-100 shadow-2xl shadow-brand-900/10 p-6">
           <div class="flex items-center justify-between">
             <div>
-              <p class="text-xs uppercase tracking-widest text-brand-700 font-bold">Quick Enquiry</p>
-              <p class="font-display font-bold text-xl text-ink-900 mt-1">Request Distributor Pricing</p>
+              <p class="text-xs uppercase tracking-widest text-brand-700 font-bold flex items-center gap-1.5"><span class="live-dot" aria-hidden="true"></span> Live right now</p>
+              <p class="font-display font-bold text-xl text-ink-900 mt-1">Running at full throttle</p>
             </div>
-            <span class="grid place-items-center w-11 h-11 rounded-xl bg-brand-50 text-brand-700"><i data-lucide="briefcase-medical" class="w-5 h-5"></i></span>
+            <span class="grid place-items-center w-11 h-11 rounded-xl bg-brand-50 text-brand-700"><i data-lucide="activity" class="w-5 h-5"></i></span>
           </div>
 
-          <form class="grid grid-cols-1 sm:grid-cols-2 gap-3 mt-5" data-demo-form>
-            <div class="sm:col-span-1">
-              <label class="label">Full Name</label>
-              <input class="input" required placeholder="Your full name" />
+          <div class="grid grid-cols-2 gap-3 mt-5">
+            <div class="ops-stat"><div class="val">24–72 hrs</div><div class="lbl">Dispatch turnaround</div></div>
+            <div class="ops-stat"><div class="val">1500+</div><div class="lbl">Active distributors</div></div>
+            <div class="ops-stat"><div class="val">100+</div><div class="lbl">Cities supplied</div></div>
+            <div class="ops-stat"><div class="val">Mon–Sat</div><div class="lbl">9 am – 7 pm IST</div></div>
+          </div>
+
+          <div class="mt-5 pt-5 border-t border-ink-100">
+            <p class="text-sm text-ink-500">Onboarding new distributor partners every week — call, WhatsApp or send an enquiry.</p>
+            <div class="mt-4 flex flex-wrap gap-3">
+              <a href="/contact.html" class="btn btn-primary">Send Enquiry <i data-lucide="send" class="w-4 h-4"></i></a>
+              <a href="tel:+918909392600" class="btn btn-ghost">Call Now <i data-lucide="phone" class="w-4 h-4"></i></a>
             </div>
-            <div class="sm:col-span-1">
-              <label class="label">Mobile</label>
-              <input class="input" required type="tel" placeholder="+91 98XXXXXXXX" />
-            </div>
-            <div class="sm:col-span-1">
-              <label class="label">City / State</label>
-              <input class="input" required placeholder="e.g. Pune, Maharashtra" />
-            </div>
-            <div class="sm:col-span-1">
-              <label class="label">I am a</label>
-              <select class="select">
-                <option>Distributor / Wholesaler</option>
-                <option>Retail Chemist</option>
-                <option>PCD Franchise enquiry</option>
-                <option>Third-party Manufacturing</option>
-                <option>Hospital / Institution</option>
-                <option>General Enquiry</option>
-              </select>
-            </div>
-            <div class="sm:col-span-2">
-              <label class="label">Message</label>
-              <textarea class="textarea" rows="3" placeholder="Mention product categories of interest"></textarea>
-            </div>
-            <div class="sm:col-span-2 flex items-center gap-3">
-              <button type="submit" class="btn btn-primary">Send Enquiry <i data-lucide="send" class="w-4 h-4"></i></button>
-              <span class="text-xs text-ink-500">We reply within 24 hours.</span>
-            </div>
-            <p class="sm:col-span-2 text-sm text-brand-700 font-semibold hidden" data-form-note></p>
-          </form>
+          </div>
         </div>
       </div>
     </div>
@@ -422,7 +420,7 @@
           <img src="/images/logo-header.png" alt="Adrijen Healthcare Pvt. Ltd." class="h-16 w-auto block" />
         </span>
       </a>
-      <p class="mt-4 text-sm leading-relaxed">A Panchkula-based PCD pharma company supplying WHO-GMP manufactured medicines to distributors, wholesalers and chemists across India.</p>
+      <p class="mt-4 text-sm leading-relaxed">A Panchkula-based PCD pharma company running at full capacity — supplying WHO-GMP medicines to distributors, wholesalers and chemists across India.</p>
       <div class="flex gap-2 mt-5">
         <a href="#" class="social" aria-label="Facebook"><i data-lucide="facebook" class="w-4 h-4"></i></a>
         <a href="#" class="social" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
@@ -455,9 +453,9 @@
     <div>
       <h4>Reach Us</h4>
       <ul class="space-y-3 text-sm">
-        <li class="flex gap-3"><i data-lucide="map-pin" class="w-4 h-4 mt-1 text-brand-300"></i><span>Corporate Office<br/>Industrial Area Phase 1,<br/>Panchkula, Haryana, India</span></li>
-        <li class="flex gap-3"><i data-lucide="phone" class="w-4 h-4 mt-1 text-brand-300"></i><a href="tel:+910000000000">+91-00000-00000</a></li>
-        <li class="flex gap-3"><i data-lucide="mail" class="w-4 h-4 mt-1 text-brand-300"></i><a href="mailto:info@adrijenhealthcare.com">info@adrijenhealthcare.com</a></li>
+        <li class="flex gap-3"><i data-lucide="map-pin" class="w-4 h-4 mt-1 text-brand-300"></i><span>Corporate Office<br/>Industrial Area Phase 1,<br/>Panchkula, Haryana, India 134109</span></li>
+        <li class="flex gap-3"><i data-lucide="phone" class="w-4 h-4 mt-1 text-brand-300"></i><a href="tel:+918909392600">+91-8909392600</a></li>
+        <li class="flex gap-3"><i data-lucide="mail" class="w-4 h-4 mt-1 text-brand-300"></i><a href="mailto:md@adrijenhealthcare.com">md@adrijenhealthcare.com</a></li>
       </ul>
     </div>
   </div>

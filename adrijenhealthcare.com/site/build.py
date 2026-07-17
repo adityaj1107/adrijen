@@ -13,6 +13,21 @@ ROOT = Path(__file__).parent
 PAGES_DIR = ROOT / "pages"
 OUT_DIR = ROOT  # write final HTML next to css/, js/
 
+CONTACT = {
+    "phone_display": "+91-8909392600",
+    "phone_tel": "+918909392600",
+    "whatsapp": "918909392600",
+    "email": "md@adrijenhealthcare.com",
+    "address_line1": "Industrial Area Phase 1,",
+    "address_line2": "Panchkula, Haryana, India — 134109",
+    "maps_query": "Adrijen+Healthcare+Pvt+Ltd,+Industrial+Area+Phase+1,+Panchkula,+Haryana+134109",
+    "google_maps_url": "https://www.google.com/maps/search/Adrijen+Healthcare+Pvt+Ltd",
+    "footer_blurb": (
+        "A Panchkula-based PCD pharma company running at full capacity — "
+        "supplying WHO-GMP medicines to distributors, wholesalers and chemists across India."
+    ),
+}
+
 # ---------- Shared <head> snippet (per-page title/desc/canonical injected) ----------
 HEAD_TEMPLATE = """<meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -63,7 +78,16 @@ HEAD_TEMPLATE = """<meta charset="utf-8" />
 <link rel="stylesheet" href="/css/styles.css" />
 """
 
-HEADER = """<header class="site-header">
+HEADER = f"""<div class="contact-bar">
+  <div class="container-x flex flex-wrap items-center justify-between gap-2 py-2 text-sm">
+    <span class="flex items-center gap-2 font-medium"><span class="live-dot" aria-hidden="true"></span> Now onboarding distributors — pan-India dispatch active</span>
+    <div class="flex flex-wrap items-center gap-x-5 gap-y-1">
+      <a href="tel:{CONTACT['phone_tel']}" class="inline-flex items-center gap-1.5 hover:text-brand-100 transition-colors"><i data-lucide="phone" class="w-3.5 h-3.5"></i> {CONTACT['phone_display']}</a>
+      <a href="mailto:{CONTACT['email']}" class="inline-flex items-center gap-1.5 hover:text-brand-100 transition-colors"><i data-lucide="mail" class="w-3.5 h-3.5"></i> {CONTACT['email']}</a>
+    </div>
+  </div>
+</div>
+<header class="site-header">
   <div class="container-x flex items-center justify-between py-4">
     <a href="/" class="flex items-center group" aria-label="Adrijen Healthcare Pvt. Ltd. — Home">
       <img src="/images/logo-header.png" alt="Adrijen Healthcare Pvt. Ltd." class="h-14 w-auto md:h-16 transition-transform duration-300 group-hover:scale-105" width="64" height="64" />
@@ -103,7 +127,7 @@ HEADER = """<header class="site-header">
   </div>
 </div>"""
 
-FOOTER = """<footer class="site-footer pt-16">
+FOOTER = f"""<footer class="site-footer pt-16">
   <div class="container-x grid md:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
       <a href="/" class="inline-flex items-center" aria-label="Adrijen Healthcare Pvt. Ltd. — Home">
@@ -111,7 +135,7 @@ FOOTER = """<footer class="site-footer pt-16">
           <img src="/images/logo-header.png" alt="Adrijen Healthcare Pvt. Ltd." class="h-16 w-auto block" />
         </span>
       </a>
-      <p class="mt-4 text-sm leading-relaxed">A Panchkula-based PCD pharma company supplying WHO-GMP manufactured medicines to distributors, wholesalers and chemists across India.</p>
+      <p class="mt-4 text-sm leading-relaxed">{CONTACT['footer_blurb']}</p>
       <div class="flex gap-2 mt-5">
         <a href="#" class="social" aria-label="Facebook"><i data-lucide="facebook" class="w-4 h-4"></i></a>
         <a href="#" class="social" aria-label="Instagram"><i data-lucide="instagram" class="w-4 h-4"></i></a>
@@ -144,9 +168,9 @@ FOOTER = """<footer class="site-footer pt-16">
     <div>
       <h4>Reach Us</h4>
       <ul class="space-y-3 text-sm">
-        <li class="flex gap-3"><i data-lucide="map-pin" class="w-4 h-4 mt-1 text-brand-300"></i><span>Corporate Office<br/>Industrial Area Phase 1,<br/>Panchkula, Haryana, India</span></li>
-        <li class="flex gap-3"><i data-lucide="phone" class="w-4 h-4 mt-1 text-brand-300"></i><a href="tel:+910000000000">+91-00000-00000</a></li>
-        <li class="flex gap-3"><i data-lucide="mail" class="w-4 h-4 mt-1 text-brand-300"></i><a href="mailto:info@adrijenhealthcare.com">info@adrijenhealthcare.com</a></li>
+        <li class="flex gap-3"><i data-lucide="map-pin" class="w-4 h-4 mt-1 text-brand-300"></i><span>Corporate Office<br/>{CONTACT['address_line1']}<br/>{CONTACT['address_line2'].replace(' — ', ' ')}</span></li>
+        <li class="flex gap-3"><i data-lucide="phone" class="w-4 h-4 mt-1 text-brand-300"></i><a href="tel:{CONTACT['phone_tel']}">{CONTACT['phone_display']}</a></li>
+        <li class="flex gap-3"><i data-lucide="mail" class="w-4 h-4 mt-1 text-brand-300"></i><a href="mailto:{CONTACT['email']}">{CONTACT['email']}</a></li>
       </ul>
     </div>
   </div>
