@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>About Us — Adrijen Healthcare</title>
 <meta name="description" content="Learn about Adrijen Healthcare — a Panchkula-based PCD pharma company supplying WHO-GMP manufactured medicines to distributors and chemists across India." />
-<meta name="theme-color" content="#1d7e62" />
+<meta name="theme-color" content="#003366" />
 <link rel="canonical" href="https://adrijenhealthcare.com/about.html" />
 
 <meta property="og:type" content="website" />
@@ -25,7 +25,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -33,12 +33,13 @@
     theme: {
       extend: {
         colors: {
-          brand: {50:'#effaf6',100:'#d8f2e7',200:'#b3e5d2',300:'#82d1b6',400:'#4cb795',500:'#2a9d7a',600:'#1d7e62',700:'#186551',800:'#155142',900:'#114338'},
-          ink:   {100:'#e6edf2',300:'#8aa1b3',500:'#4a6478',700:'#1f3a4d',900:'#0b1d2a'}
+          brand: {50:'#eef3f8',100:'#d9e4f0',200:'#b3c9e1',300:'#82a6cb',400:'#4d7cae',500:'#2c5990',600:'#1a4372',700:'#003366',800:'#002a54',900:'#001f3d'},
+          gold:  {50:'#fdf8ec',100:'#f9edc9',200:'#f3dd93',300:'#e9c766',400:'#ddb44a',500:'#d4af37',600:'#b8912a',700:'#8f6f20',800:'#6b5318',900:'#4a3910'},
+          ink:   {100:'#e7ebf1',300:'#8b96a8',500:'#4d5b70',700:'#1e2938',900:'#0a121e'}
         },
         fontFamily: {
           sans:    ['Inter','system-ui','sans-serif'],
-          display: ['"Plus Jakarta Sans"','Inter','sans-serif']
+          display: ['"Playfair Display"','Georgia','serif']
         }
       }
     }
@@ -48,9 +49,20 @@
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="stylesheet" href="/css/styles.css" />
+<script src="/js/data/settings.js"></script>
 
 </head>
 <body>
+<div id="loadingScreen" class="loading-screen">
+  <img src="/images/logo.png" alt="Adrijen Healthcare" class="loading-screen-logo" width="72" height="72" />
+  <div class="loading-screen-bar"><span></span></div>
+</div>
+<script>
+  if (sessionStorage.getItem('adrijenLoaded')) {
+    document.documentElement.classList.add('no-loading-screen');
+  }
+</script>
+<div class="scroll-progress"><div class="scroll-progress-bar" data-scroll-progress></div></div>
 <div class="contact-bar">
   <div class="container-x flex flex-wrap items-center justify-between gap-2 py-2 text-sm">
     <span class="flex items-center gap-2 font-medium"><span class="live-dot" aria-hidden="true"></span> Now onboarding distributors — pan-India dispatch active</span>
@@ -75,7 +87,7 @@
       <a class="nav-link" data-nav="contact.html" href="/contact.html">Contact&nbsp;Us</a>
     </nav>
     <div class="flex items-center gap-2">
-      <a href="/contact.html" class="hidden md:inline-flex btn btn-primary">Become a Distributor <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="hidden md:inline-flex btn btn-gold">Get a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       <button id="menuOpen" class="lg:hidden p-2 rounded-xl border border-ink-100" aria-label="Open menu">
         <i data-lucide="menu" class="w-6 h-6 text-ink-900"></i>
       </button>
@@ -96,7 +108,7 @@
     <a href="/careers.html">Career</a>
     <a href="/blog.html">Blog</a>
     <a href="/contact.html">Contact Us</a>
-    <a href="/contact.html" class="btn btn-primary justify-center mt-2">Become a Distributor</a>
+    <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="btn btn-gold justify-center mt-2">Get a Quote</a>
   </div>
 </div>
 <section class="page-banner">
@@ -127,9 +139,9 @@
       <h2 class="section-title mt-2">Built on trust, scaled by quality.</h2>
       <p class="mt-4 text-ink-500">Adrijen Healthcare was founded with a clear belief — that genuine quality, fair pricing and on-time supply are the only things distributors and chemists really need from a pharma supplier. We started small, with a focused product list and a handful of partners, and have grown into a trusted name across multiple states.</p>
       <p class="mt-3 text-ink-500">Today our portfolio covers 20 product categories — from everyday tablets and syrups to specialised injections, ointments, dental, ophthalmic and ayurvedic ranges. Every batch is manufactured in WHO-GMP and ISO 9001:2015 certified facilities under strict in-process and finished-product quality control.</p>
-      <div class="grid grid-cols-3 gap-4 mt-8">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mt-8">
         <div class="stat"><div class="num"><span data-count="5" data-suffix="+">0</span></div><div class="lbl">Years</div></div>
-        <div class="stat"><div class="num"><span data-count="250" data-suffix="+">0</span></div><div class="lbl">Products</div></div>
+        <div class="stat"><div class="num"><span data-count="157" data-suffix="+">0</span></div><div class="lbl">Products</div></div>
         <div class="stat"><div class="num"><span data-count="1500" data-suffix="+">0</span></div><div class="lbl">Distributors</div></div>
       </div>
     </div>
@@ -144,19 +156,19 @@
       <h2 class="section-title mt-2">Vision, Mission &amp; Quality</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-6 mt-12">
-      <div class="card" data-aos="fade-up">
+      <div class="card" data-tilt data-aos="fade-up">
         <div class="icon-wrap"><i data-lucide="eye" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-xl text-ink-900">Our Vision</h3>
         <p class="mt-2 text-ink-500">To contribute to society's well-being by making safe, effective and affordable pharmaceutical products available wherever they are needed — backed by uncompromising quality control and full regulatory compliance.</p>
         <p class="mt-2 text-ink-500">We see every distributor relationship as a long-term partnership built on trust, transparency and shared success.</p>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <div class="card" data-tilt data-aos="fade-up" data-aos-delay="100">
         <div class="icon-wrap"><i data-lucide="target" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-xl text-ink-900">Our Mission</h3>
         <p class="mt-2 text-ink-500">To improve healthcare access across India by delivering high-quality medicines and healthcare products through a reliable distributor network — at prices that reach the patient who needs them most.</p>
         <p class="mt-2 text-ink-500">We are committed to ethical business, continuous innovation and addressing unmet medical needs in everyday Indian healthcare.</p>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <div class="card" data-tilt data-aos="fade-up" data-aos-delay="200">
         <div class="icon-wrap"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-xl text-ink-900">Our Quality</h3>
         <p class="mt-2 text-ink-500">All Adrijen products are manufactured under strict WHO-GMP guidelines with batch-level QC documentation. We test for safety, efficacy and purity so that every chemist and patient gets a medicine they can trust.</p>
@@ -174,17 +186,17 @@
       <h2 class="section-title mt-2">A pharma supplier that just works.</h2>
     </div>
     <div class="grid md:grid-cols-3 gap-6 mt-12">
-      <div class="card" data-aos="fade-up">
+      <div class="card" data-tilt data-aos="fade-up">
         <div class="icon-wrap"><i data-lucide="package" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-xl text-ink-900">Wide Product Range</h3>
         <p class="mt-2 text-ink-500">157 formulations across 20 categories — capsules, tablets, syrups, injections, ointments, dental, ophthalmic, protein, ayurvedic and more.</p>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <div class="card" data-tilt data-aos="fade-up" data-aos-delay="100">
         <div class="icon-wrap"><i data-lucide="badge-check" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-xl text-ink-900">Service Guarantee</h3>
         <p class="mt-2 text-ink-500">24×7 support, quick query resolution and transparent invoicing — backed by a dedicated account manager for every active distributor.</p>
       </div>
-      <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <div class="card" data-tilt data-aos="fade-up" data-aos-delay="200">
         <div class="icon-wrap"><i data-lucide="users" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-xl text-ink-900">Open to Partners</h3>
         <p class="mt-2 text-ink-500">We welcome qualified distributors, retail chemist chains, hospitals and corporate buyers — at fair pricing and dependable service levels.</p>
@@ -223,25 +235,25 @@
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur" data-aos="fade-up">
-        <div class="w-24 h-24 rounded-full mx-auto bg-gradient-to-br from-brand-400 to-brand-700 grid place-items-center font-display font-extrabold text-3xl">AJ</div>
-        <h3 class="font-display font-bold text-lg mt-4">Aditya Jindal</h3>
-        <p class="text-brand-300 text-sm">Managing Director</p>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur" data-tilt data-aos="fade-up">
+        <div class="w-24 h-24 rounded-full mx-auto bg-gradient-to-br from-brand-400 to-brand-700 grid place-items-center font-display font-extrabold text-3xl">RJ</div>
+        <h3 class="font-display font-bold text-lg mt-4">Rajesh Jindal</h3>
+        <p class="text-gold-300 text-sm">Director</p>
       </div>
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur" data-aos="fade-up" data-aos-delay="100">
-        <div class="w-24 h-24 rounded-full mx-auto bg-gradient-to-br from-blue-400 to-blue-700 grid place-items-center font-display font-extrabold text-3xl">SR</div>
-        <h3 class="font-display font-bold text-lg mt-4">Dr. Sneha Rao</h3>
-        <p class="text-brand-300 text-sm">Head — Quality &amp; R&amp;D</p>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur" data-tilt data-aos="fade-up" data-aos-delay="100">
+        <div class="w-24 h-24 rounded-full mx-auto bg-gradient-to-br from-gold-400 to-gold-700 grid place-items-center font-display font-extrabold text-3xl">RJ</div>
+        <h3 class="font-display font-bold text-lg mt-4">Rupali Jindal</h3>
+        <p class="text-gold-300 text-sm">Director</p>
       </div>
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur" data-aos="fade-up" data-aos-delay="200">
-        <div class="w-24 h-24 rounded-full mx-auto bg-gradient-to-br from-orange-400 to-orange-700 grid place-items-center font-display font-extrabold text-3xl">VG</div>
-        <h3 class="font-display font-bold text-lg mt-4">Vikram Gupta</h3>
-        <p class="text-brand-300 text-sm">Director — Operations</p>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur" data-tilt data-aos="fade-up" data-aos-delay="200">
+        <div class="w-24 h-24 rounded-full mx-auto bg-gradient-to-br from-brand-500 to-brand-900 grid place-items-center font-display font-extrabold text-3xl">AJ</div>
+        <h3 class="font-display font-bold text-lg mt-4">Abhishek Jindal</h3>
+        <p class="text-gold-300 text-sm">Director</p>
       </div>
-      <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur" data-aos="fade-up" data-aos-delay="300">
-        <div class="w-24 h-24 rounded-full mx-auto bg-gradient-to-br from-purple-400 to-purple-700 grid place-items-center font-display font-extrabold text-3xl">NB</div>
-        <h3 class="font-display font-bold text-lg mt-4">Neha Bhardwaj</h3>
-        <p class="text-brand-300 text-sm">Head — Distributor Network</p>
+      <div class="rounded-2xl bg-white/5 border border-white/10 p-6 text-center backdrop-blur" data-tilt data-aos="fade-up" data-aos-delay="300">
+        <div class="w-24 h-24 rounded-full mx-auto bg-gradient-to-br from-gold-500 to-gold-800 grid place-items-center font-display font-extrabold text-3xl">KJ</div>
+        <h3 class="font-display font-bold text-lg mt-4">Kapil Jindal</h3>
+        <p class="text-gold-300 text-sm">Director</p>
       </div>
     </div>
   </div>
@@ -266,7 +278,7 @@
 <!-- CTA -->
 <section class="py-20">
   <div class="container-x">
-    <div class="rounded-[28px] p-10 lg:p-14 bg-gradient-to-br from-brand-600 to-brand-800 text-white relative overflow-hidden" data-aos="zoom-in">
+    <div class="rounded-[28px] p-10 lg:p-14 bg-gradient-to-br from-brand-600 to-brand-800 cta-animated text-white relative overflow-hidden" data-aos="zoom-in">
       <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/10 blur-2xl"></div>
       <div class="grid lg:grid-cols-12 gap-8 items-center relative">
         <div class="lg:col-span-8"><h2 class="font-display font-extrabold text-3xl sm:text-4xl">Want to stock Adrijen products?</h2><p class="mt-3 text-white/85 max-w-2xl">Join 1,500+ distributors and chemist outlets that trust Adrijen for quality, supply consistency and fair pricing.</p></div>
@@ -276,9 +288,17 @@
   </div>
 </section>
 
-<a href="https://wa.me/918909392600?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Adrijen%20Healthcare%27s%20products" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+<a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
   <i data-lucide="message-circle"></i>
+  <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
 </a>
+<button data-back-to-top class="back-to-top" aria-label="Back to top">
+  <i data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>
+<div class="cookie-banner" data-cookie-banner aria-hidden="true">
+  <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
+  <button type="button" class="btn btn-gold" data-cookie-accept>Accept</button>
+</div>
 <footer class="site-footer pt-16">
   <div class="container-x grid md:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>

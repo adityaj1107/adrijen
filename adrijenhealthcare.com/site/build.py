@@ -32,9 +32,33 @@ CONTACT = {
     ),
 }
 
-WHATSAPP_FLOAT = f"""<a href="https://wa.me/{CONTACT['whatsapp']}?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Adrijen%20Healthcare%27s%20products" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+WHATSAPP_TEXT = "Hello Adrijen Healthcare, I would like to know more about your products and PCD franchise opportunities."
+WHATSAPP_URL = f"https://wa.me/{CONTACT['whatsapp']}?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities."
+
+WHATSAPP_FLOAT = f"""<a href="{WHATSAPP_URL}" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
   <i data-lucide="message-circle"></i>
-</a>"""
+  <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
+</a>
+<button data-back-to-top class="back-to-top" aria-label="Back to top">
+  <i data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>"""
+
+SCROLL_PROGRESS = """<div class="scroll-progress"><div class="scroll-progress-bar" data-scroll-progress></div></div>"""
+
+LOADING_SCREEN = """<div id="loadingScreen" class="loading-screen">
+  <img src="/images/logo.png" alt="Adrijen Healthcare" class="loading-screen-logo" width="72" height="72" />
+  <div class="loading-screen-bar"><span></span></div>
+</div>
+<script>
+  if (sessionStorage.getItem('adrijenLoaded')) {
+    document.documentElement.classList.add('no-loading-screen');
+  }
+</script>"""
+
+COOKIE_BANNER = """<div class="cookie-banner" data-cookie-banner aria-hidden="true">
+  <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
+  <button type="button" class="btn btn-gold" data-cookie-accept>Accept</button>
+</div>"""
 
 # ---------- Shared <head> snippet (per-page title/desc/canonical injected) ----------
 HEAD_TEMPLATE = """<meta charset="utf-8" />
@@ -42,7 +66,7 @@ HEAD_TEMPLATE = """<meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>{title}</title>
 <meta name="description" content="{description}" />
-<meta name="theme-color" content="#1d7e62" />
+<meta name="theme-color" content="#003366" />
 <link rel="canonical" href="https://adrijenhealthcare.com{canonical}" />
 
 <meta property="og:type" content="website" />
@@ -61,7 +85,7 @@ HEAD_TEMPLATE = """<meta charset="utf-8" />
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -69,12 +93,13 @@ HEAD_TEMPLATE = """<meta charset="utf-8" />
     theme: {{
       extend: {{
         colors: {{
-          brand: {{50:'#effaf6',100:'#d8f2e7',200:'#b3e5d2',300:'#82d1b6',400:'#4cb795',500:'#2a9d7a',600:'#1d7e62',700:'#186551',800:'#155142',900:'#114338'}},
-          ink:   {{100:'#e6edf2',300:'#8aa1b3',500:'#4a6478',700:'#1f3a4d',900:'#0b1d2a'}}
+          brand: {{50:'#eef3f8',100:'#d9e4f0',200:'#b3c9e1',300:'#82a6cb',400:'#4d7cae',500:'#2c5990',600:'#1a4372',700:'#003366',800:'#002a54',900:'#001f3d'}},
+          gold:  {{50:'#fdf8ec',100:'#f9edc9',200:'#f3dd93',300:'#e9c766',400:'#ddb44a',500:'#d4af37',600:'#b8912a',700:'#8f6f20',800:'#6b5318',900:'#4a3910'}},
+          ink:   {{100:'#e7ebf1',300:'#8b96a8',500:'#4d5b70',700:'#1e2938',900:'#0a121e'}}
         }},
         fontFamily: {{
           sans:    ['Inter','system-ui','sans-serif'],
-          display: ['"Plus Jakarta Sans"','Inter','sans-serif']
+          display: ['"Playfair Display"','Georgia','serif']
         }}
       }}
     }}
@@ -84,6 +109,7 @@ HEAD_TEMPLATE = """<meta charset="utf-8" />
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="stylesheet" href="/css/styles.css" />
+<script src="/js/data/settings.js"></script>
 """
 
 HEADER = f"""<div class="contact-bar">
@@ -110,7 +136,7 @@ HEADER = f"""<div class="contact-bar">
       <a class="nav-link" data-nav="contact.html" href="/contact.html">Contact&nbsp;Us</a>
     </nav>
     <div class="flex items-center gap-2">
-      <a href="/contact.html" class="hidden md:inline-flex btn btn-primary">Become a Distributor <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      <a href="{WHATSAPP_URL}" target="_blank" rel="noopener" class="hidden md:inline-flex btn btn-gold">Get a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       <button id="menuOpen" class="lg:hidden p-2 rounded-xl border border-ink-100" aria-label="Open menu">
         <i data-lucide="menu" class="w-6 h-6 text-ink-900"></i>
       </button>
@@ -131,7 +157,7 @@ HEADER = f"""<div class="contact-bar">
     <a href="/careers.html">Career</a>
     <a href="/blog.html">Blog</a>
     <a href="/contact.html">Contact Us</a>
-    <a href="/contact.html" class="btn btn-primary justify-center mt-2">Become a Distributor</a>
+    <a href="{WHATSAPP_URL}" target="_blank" rel="noopener" class="btn btn-gold justify-center mt-2">Get a Quote</a>
   </div>
 </div>"""
 
@@ -211,11 +237,17 @@ def assemble(meta_block: str, body_html: str) -> str:
         "<!doctype html>\n<html lang=\"en\">\n<head>\n"
         + head
         + "\n</head>\n<body>\n"
+        + LOADING_SCREEN
+        + "\n"
+        + SCROLL_PROGRESS
+        + "\n"
         + HEADER
         + "\n"
         + body_html
         + "\n"
         + WHATSAPP_FLOAT
+        + "\n"
+        + COOKIE_BANNER
         + "\n"
         + FOOTER
     )

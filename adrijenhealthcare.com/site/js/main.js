@@ -2,6 +2,40 @@
 (function () {
   'use strict';
 
+  /* ---------- Loading screen ---------- */
+  const hideLoading = () => {
+    document.body.classList.add('loading-screen-done');
+    sessionStorage.setItem('adrijenLoaded', '1');
+    setTimeout(() => {
+      const el = document.getElementById('loadingScreen');
+      if (el) el.remove();
+    }, 600);
+  };
+  if (sessionStorage.getItem('adrijenLoaded')) {
+    document.body.classList.add('loading-screen-done');
+    const el = document.getElementById('loadingScreen');
+    if (el) el.remove();
+  } else {
+    window.addEventListener('load', () => setTimeout(hideLoading, 350));
+    setTimeout(hideLoading, 2500); // safety timeout
+  }
+
+  /* ---------- Cookie consent banner ---------- */
+  const cookieBanner = document.querySelector('[data-cookie-banner]');
+  if (cookieBanner) {
+    if (!localStorage.getItem('adrijenCookieConsent')) {
+      setTimeout(() => cookieBanner.classList.add('visible'), 900);
+    } else {
+      cookieBanner.remove();
+    }
+    const acceptBtn = cookieBanner.querySelector('[data-cookie-accept]');
+    acceptBtn && acceptBtn.addEventListener('click', () => {
+      localStorage.setItem('adrijenCookieConsent', '1');
+      cookieBanner.classList.remove('visible');
+      setTimeout(() => cookieBanner.remove(), 400);
+    });
+  }
+
   /* ---------- Mobile menu ---------- */
   const menu = document.getElementById('mobileMenu');
   const openBtn = document.getElementById('menuOpen');
@@ -19,16 +53,77 @@
     if (link.dataset.nav.toLowerCase() === path) link.classList.add('active');
   });
 
-  /* ---------- Sticky shadow on scroll ---------- */
+  /* ---------- Sticky shadow + shrink on scroll ---------- */
   const header = document.querySelector('.site-header');
-  if (header) {
+  const progressBar = document.querySelector('[data-scroll-progress]');
+  const backToTop = document.querySelector('[data-back-to-top]');
+  if (header || progressBar || backToTop) {
     const onScroll = () => {
-      if (window.scrollY > 8) header.style.boxShadow = '0 8px 28px -18px rgba(11,29,42,.25)';
-      else header.style.boxShadow = 'none';
+      const y = window.scrollY;
+      if (header) {
+        header.style.boxShadow = y > 8 ? '0 8px 28px -18px rgba(11,29,42,.25)' : 'none';
+        header.classList.toggle('scrolled', y > 40);
+      }
+      if (progressBar) {
+        const h = document.documentElement;
+        const max = h.scrollHeight - h.clientHeight;
+        progressBar.style.width = max > 0 ? `${Math.min(100, (y / max) * 100)}%` : '0%';
+      }
+      if (backToTop) backToTop.classList.toggle('visible', y > 600);
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
   }
+  if (backToTop) {
+    backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  }
+
+  /* ---------- Tilt-on-hover ---------- */
+  document.querySelectorAll('[data-tilt]').forEach(card => {
+    const strength = 8;
+    card.addEventListener('mousemove', (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width - 0.5;
+      const py = (e.clientY - r.top) / r.height - 0.5;
+      card.style.transform = `perspective(700px) rotateY(${px * strength}deg) rotateX(${-py * strength}deg) translateY(-4px)`;
+    });
+    card.addEventListener('mouseleave', () => { card.style.transform = ''; });
+  });
+
+  /* ---------- Testimonial carousel ---------- */
+  document.querySelectorAll('[data-testi-carousel]').forEach(carousel => {
+    const track = carousel.querySelector('.testi-track');
+    const slides = carousel.querySelectorAll('.testi-slide');
+    const dotsWrap = carousel.querySelector('[data-testi-dots]');
+    const prevBtn = carousel.querySelector('.testi-nav.prev');
+    const nextBtn = carousel.querySelector('.testi-nav.next');
+    if (!track || !slides.length) return;
+    let idx = 0, timer;
+
+    slides.forEach((_, i) => {
+      if (!dotsWrap) return;
+      const dot = document.createElement('button');
+      dot.className = 'testi-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Go to testimonial ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+    const dots = dotsWrap ? dotsWrap.querySelectorAll('.testi-dot') : [];
+
+    const render = () => {
+      track.style.transform = `translateX(-${idx * 100}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    };
+    const goTo = (i) => { idx = (i + slides.length) % slides.length; render(); resetTimer(); };
+    const next = () => goTo(idx + 1);
+    const prev = () => goTo(idx - 1);
+    const resetTimer = () => { clearInterval(timer); timer = setInterval(next, 5000); };
+
+    nextBtn && nextBtn.addEventListener('click', next);
+    prevBtn && prevBtn.addEventListener('click', prev);
+    render();
+    resetTimer();
+  });
 
   /* ---------- AOS init ---------- */
   if (window.AOS) {
@@ -124,6 +219,143 @@
       }, 900);
     });
   });
+
+  /* ---------- WhatsApp float button (uses SITE_SETTINGS) ---------- */
+  const settings = window.SITE_SETTINGS;
+  if (settings) {
+    const waFloat = document.querySelector('.whatsapp-float');
+    if (waFloat) waFloat.setAttribute('href', settings.whatsappUrl());
+  }
+
+  /* ---------- Product cards: per-card Enquire links + detail modal ---------- */
+  const products = window.PRODUCTS;
+  if (products && settings) {
+    const byId = {};
+    products.forEach(p => { byId[p.id] = p; });
+
+    document.querySelectorAll('[data-product-enquire]').forEach(link => {
+      const card = link.closest('[data-product-id]');
+      const p = card && byId[card.dataset.productId];
+      if (!p) return;
+      link.setAttribute('href', settings.whatsappUrl(
+        `Hello Adrijen Healthcare, I'd like to enquire about ${p.name} (${p.category}).`
+      ));
+      link.addEventListener('click', e => e.stopPropagation());
+    });
+
+    const modal = document.querySelector('[data-product-modal]');
+    if (modal) {
+      const closeBtn = modal.querySelector('[data-product-modal-close]');
+      const els = {
+        thumb: modal.querySelector('[data-modal-thumb]'),
+        category: modal.querySelector('[data-modal-category]'),
+        name: modal.querySelector('[data-modal-name]'),
+        composition: modal.querySelector('[data-modal-composition]'),
+        pack: modal.querySelector('[data-modal-pack]'),
+        packLabel: modal.querySelector('[data-modal-pack-label]'),
+        enquire: modal.querySelector('[data-modal-enquire]'),
+      };
+      const openModal = (p) => {
+        els.category.textContent = p.category;
+        els.name.textContent = p.name;
+        els.composition.textContent = p.composition;
+        els.pack.textContent = p.pack || 'On request';
+        els.packLabel.style.display = p.pack ? '' : 'none';
+        els.pack.style.display = p.pack ? '' : 'none';
+        els.thumb.innerHTML = p.image
+          ? `<img src="${p.image}" alt="${p.name} pack shot" />`
+          : `<i data-lucide="${p.icon || 'pill'}"></i>`;
+        els.enquire.setAttribute('href', settings.whatsappUrl(
+          `Hello Adrijen Healthcare, I'd like to enquire about ${p.name} (${p.category}).`
+        ));
+        if (window.lucide) lucide.createIcons();
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      };
+      const closeModal = () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      };
+      document.querySelectorAll('[data-product-view]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('[data-product-id]');
+          const p = card && byId[card.dataset.productId];
+          if (p) openModal(p);
+        });
+      });
+      closeBtn && closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    }
+  }
+
+  /* ---------- Blog posts: read-more modal ---------- */
+  const posts = window.BLOG_POSTS;
+  if (posts) {
+    const byId = {};
+    posts.forEach(p => { byId[p.id] = p; });
+    const modal = document.querySelector('[data-blog-modal]');
+    if (modal) {
+      const closeBtn = modal.querySelector('[data-blog-modal-close]');
+      const els = {
+        category: modal.querySelector('[data-blog-modal-category]'),
+        title: modal.querySelector('[data-blog-modal-title]'),
+        meta: modal.querySelector('[data-blog-modal-meta]'),
+        content: modal.querySelector('[data-blog-modal-content]'),
+      };
+      const openModal = (p) => {
+        els.category.textContent = p.category;
+        els.title.textContent = p.title;
+        els.meta.textContent = `${p.author} • ${new Date(p.date).toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })} • ${p.readTime}`;
+        els.content.textContent = p.content;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+      };
+      const closeModal = () => {
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      };
+      document.querySelectorAll('[data-blog-read]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const card = btn.closest('[data-blog-id]');
+          const p = card && byId[card.dataset.blogId];
+          if (p) openModal(p);
+        });
+      });
+      closeBtn && closeBtn.addEventListener('click', closeModal);
+      modal.addEventListener('click', e => { if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+    }
+  }
+
+  /* ---------- Career openings: apply link + WhatsApp ---------- */
+  const jobs = window.JOB_OPENINGS;
+  if (jobs && settings) {
+    const byId = {};
+    jobs.forEach(j => { byId[j.id] = j; });
+    const applySelect = document.querySelector('#apply select');
+    document.querySelectorAll('[data-job-apply-link]').forEach(link => {
+      link.addEventListener('click', () => {
+        const card = link.closest('[data-job-id]');
+        const j = card && byId[card.dataset.jobId];
+        if (j && applySelect) {
+          [...applySelect.options].forEach(o => { if (o.text === j.title) applySelect.value = o.value; });
+        }
+      });
+    });
+    document.querySelectorAll('[data-job-whatsapp]').forEach(link => {
+      const card = link.closest('[data-job-id]');
+      const j = card && byId[card.dataset.jobId];
+      if (!j) return;
+      link.setAttribute('href', settings.whatsappUrl(
+        `Hello Adrijen Healthcare, I'd like to apply for the ${j.title} role (${j.location}).`
+      ));
+    });
+  }
 
   /* ---------- Lucide icons render ---------- */
   if (window.lucide) lucide.createIcons();

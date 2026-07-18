@@ -7,7 +7,7 @@
 <title>Adrijen Healthcare — PCD Pharma Company & Distributor Partner</title>
 <meta name="description" content="Adrijen Healthcare is a PCD pharma company manufacturing 157 WHO-GMP certified formulations across 20 product categories — supplied directly to distributors, wholesalers and chemists across India." />
 <meta name="keywords" content="PCD pharma company, pharma distributors India, WHO-GMP pharma, third party manufacturing, pharma wholesale supplier, ISO 9001 pharma, Adrijen Healthcare" />
-<meta name="theme-color" content="#1d7e62" />
+<meta name="theme-color" content="#003366" />
 <link rel="canonical" href="https://adrijenhealthcare.com/" />
 
 <!-- Open Graph -->
@@ -29,7 +29,7 @@
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
 <!-- Tailwind (Play CDN) -->
 <script src="https://cdn.tailwindcss.com"></script>
@@ -39,15 +39,20 @@
       extend: {
         colors: {
           brand: {
-            50:'#effaf6',100:'#d8f2e7',200:'#b3e5d2',300:'#82d1b6',
-            400:'#4cb795',500:'#2a9d7a',600:'#1d7e62',700:'#186551',
-            800:'#155142',900:'#114338'
+            50:'#eef3f8',100:'#d9e4f0',200:'#b3c9e1',300:'#82a6cb',
+            400:'#4d7cae',500:'#2c5990',600:'#1a4372',700:'#003366',
+            800:'#002a54',900:'#001f3d'
           },
-          ink: { 100:'#e6edf2',300:'#8aa1b3',500:'#4a6478',700:'#1f3a4d',900:'#0b1d2a' }
+          gold: {
+            50:'#fdf8ec',100:'#f9edc9',200:'#f3dd93',300:'#e9c766',
+            400:'#ddb44a',500:'#d4af37',600:'#b8912a',700:'#8f6f20',
+            800:'#6b5318',900:'#4a3910'
+          },
+          ink: { 100:'#e7ebf1',300:'#8b96a8',500:'#4d5b70',700:'#1e2938',900:'#0a121e' }
         },
         fontFamily: {
           sans:    ['Inter','system-ui','sans-serif'],
-          display: ['"Plus Jakarta Sans"','Inter','sans-serif']
+          display: ['"Playfair Display"','Georgia','serif']
         }
       }
     }
@@ -62,6 +67,7 @@
 
 <!-- Site styles -->
 <link rel="stylesheet" href="/css/styles.css" />
+<script src="/js/data/settings.js"></script>
 
 <!-- JSON-LD -->
 <script type="application/ld+json">
@@ -98,6 +104,18 @@
 </head>
 <body>
 
+<div id="loadingScreen" class="loading-screen">
+  <img src="/images/logo.png" alt="Adrijen Healthcare" class="loading-screen-logo" width="72" height="72" />
+  <div class="loading-screen-bar"><span></span></div>
+</div>
+<script>
+  if (sessionStorage.getItem('adrijenLoaded')) {
+    document.documentElement.classList.add('no-loading-screen');
+  }
+</script>
+
+<div class="scroll-progress"><div class="scroll-progress-bar" data-scroll-progress></div></div>
+
 <!-- ============== HEADER ============== -->
 <div class="contact-bar">
   <div class="container-x flex flex-wrap items-center justify-between gap-2 py-2 text-sm">
@@ -125,7 +143,7 @@
     </nav>
 
     <div class="flex items-center gap-2">
-      <a href="/contact.html" class="hidden md:inline-flex btn btn-primary">Become a Distributor <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="hidden md:inline-flex btn btn-gold">Get a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       <button id="menuOpen" class="lg:hidden p-2 rounded-xl border border-ink-100" aria-label="Open menu">
         <i data-lucide="menu" class="w-6 h-6 text-ink-900"></i>
       </button>
@@ -149,7 +167,7 @@
     <a href="/careers.html">Career</a>
     <a href="/blog.html">Blog</a>
     <a href="/contact.html">Contact Us</a>
-    <a href="/contact.html" class="btn btn-primary justify-center mt-2">Become a Distributor</a>
+    <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="btn btn-gold justify-center mt-2">Get a Quote</a>
   </div>
 </div>
 
@@ -166,10 +184,10 @@
         Adrijen Healthcare is a Panchkula-based PCD pharma company with 157 formulations across 20 product categories — supplied directly to distributors, wholesalers and chemist chains across India.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a href="/contact.html" class="btn btn-primary">Become a Distributor <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-        <a href="/products.html" class="btn btn-ghost">Browse Products <i data-lucide="pill" class="w-4 h-4"></i></a>
+        <a href="/products.html" class="btn btn-primary">Explore Products <i data-lucide="pill" class="w-4 h-4"></i></a>
+        <a href="/contact.html" class="btn btn-ghost">Contact Us <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       </div>
-      <div class="mt-10 grid grid-cols-4 gap-4 max-w-xl">
+      <div class="mt-10 grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-xl">
         <div class="stat"><div class="num"><span data-count="157" data-suffix="+">0</span></div><div class="lbl">Products</div></div>
         <div class="stat"><div class="num"><span data-count="1500" data-suffix="+">0</span></div><div class="lbl">Distributors</div></div>
         <div class="stat"><div class="num"><span data-count="100" data-suffix="+">0</span></div><div class="lbl">Cities</div></div>
@@ -179,8 +197,8 @@
 
     <div class="lg:col-span-5" data-aos="fade-left">
       <div class="relative">
-        <div class="absolute -inset-4 bg-gradient-to-tr from-brand-300/40 to-blue-200/40 rounded-[36px] blur-2xl"></div>
-        <div class="relative rounded-[28px] ops-card border border-ink-100 shadow-2xl shadow-brand-900/10 p-6">
+        <div class="absolute -inset-4 bg-gradient-to-tr from-brand-300/40 to-gold-200/40 rounded-[36px] blur-2xl"></div>
+        <div class="relative rounded-[28px] ops-card border border-ink-100 shadow-2xl shadow-brand-900/10 p-6" data-tilt>
           <div class="flex items-center justify-between">
             <div>
               <p class="text-xs uppercase tracking-widest text-brand-700 font-bold flex items-center gap-1.5"><span class="live-dot" aria-hidden="true"></span> Live right now</p>
@@ -249,32 +267,32 @@
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-      <div class="card feature" data-aos="fade-up">
+      <div class="card feature" data-tilt data-aos="fade-up">
         <div class="icon-wrap"><i data-lucide="shield-check" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-lg text-ink-900">WHO-GMP Manufactured</h3>
         <p class="mt-2 text-ink-500">All formulations are produced in WHO-GMP and ISO 9001:2015 certified facilities, with batch-level QC documentation.</p>
       </div>
-      <div class="card feature" data-aos="fade-up" data-aos-delay="80">
+      <div class="card feature" data-tilt data-aos="fade-up" data-aos-delay="80">
         <div class="icon-wrap"><i data-lucide="package" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-lg text-ink-900">20 Product Categories</h3>
         <p class="mt-2 text-ink-500">Tablets, capsules, syrups, injections, ayurvedic, ointments, dental, ophthalmic and protein ranges — under one supplier.</p>
       </div>
-      <div class="card feature" data-aos="fade-up" data-aos-delay="160">
+      <div class="card feature" data-tilt data-aos="fade-up" data-aos-delay="160">
         <div class="icon-wrap"><i data-lucide="truck" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-lg text-ink-900">Pan-India Dispatch</h3>
         <p class="mt-2 text-ink-500">Same-day order confirmation, dispatch in 24–72 hours, and tracking right up to your warehouse.</p>
       </div>
-      <div class="card feature" data-aos="fade-up">
+      <div class="card feature" data-tilt data-aos="fade-up">
         <div class="icon-wrap"><i data-lucide="indian-rupee" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-lg text-ink-900">Distributor Pricing</h3>
         <p class="mt-2 text-ink-500">Transparent net rates, healthy slab discounts and credit options for established distributors.</p>
       </div>
-      <div class="card feature" data-aos="fade-up" data-aos-delay="80">
+      <div class="card feature" data-tilt data-aos="fade-up" data-aos-delay="80">
         <div class="icon-wrap"><i data-lucide="package-check" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-lg text-ink-900">Premium Packaging</h3>
         <p class="mt-2 text-ink-500">Tamper-evident, leak-proof, well-printed packs that look great on the chemist's shelf.</p>
       </div>
-      <div class="card feature" data-aos="fade-up" data-aos-delay="160">
+      <div class="card feature" data-tilt data-aos="fade-up" data-aos-delay="160">
         <div class="icon-wrap"><i data-lucide="headset" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-lg text-ink-900">Dedicated Account Manager</h3>
         <p class="mt-2 text-ink-500">One point of contact for orders, invoices and grievances. Real humans, real response times.</p>
@@ -320,19 +338,19 @@
       <a href="/services.html" class="btn btn-primary mt-6">Explore services <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
     </div>
     <div class="lg:col-span-7 grid sm:grid-cols-2 gap-5">
-      <div class="card feature" data-aos="fade-up">
+      <div class="card feature" data-tilt data-aos="fade-up">
         <div class="icon-wrap"><i data-lucide="handshake" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-ink-900 text-lg">PCD Pharma Franchise</h3>
         <p class="mt-2 text-sm text-ink-500">Sell our 157 products in your district with monopoly rights, healthy margins and full marketing kit support.</p>
         <a href="/services.html" class="inline-flex items-center gap-1 text-brand-700 font-semibold mt-3 text-sm">Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       </div>
-      <div class="card feature" data-aos="fade-up" data-aos-delay="80">
+      <div class="card feature" data-tilt data-aos="fade-up" data-aos-delay="80">
         <div class="icon-wrap"><i data-lucide="factory" class="w-6 h-6"></i></div>
         <h3 class="font-display font-bold text-ink-900 text-lg">Third-party Manufacturing</h3>
         <p class="mt-2 text-sm text-ink-500">Get any formulation manufactured under your brand name in WHO-GMP facilities, with low MOQs and fast TAT.</p>
         <a href="/services.html" class="inline-flex items-center gap-1 text-brand-700 font-semibold mt-3 text-sm">Learn more <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       </div>
-      <div class="card sm:col-span-2 bg-gradient-to-br from-brand-50 to-blue-50 border-brand-200" data-aos="fade-up" data-aos-delay="160">
+      <div class="card sm:col-span-2 bg-gradient-to-br from-brand-50 to-gold-50 border-brand-200" data-aos="fade-up" data-aos-delay="160">
         <div class="flex items-start gap-4">
           <div class="icon-wrap shrink-0"><i data-lucide="truck" class="w-6 h-6"></i></div>
           <div>
@@ -348,44 +366,89 @@
 <!-- ============== TESTIMONIALS ============== -->
 <section class="py-20 bg-ink-900 text-white relative overflow-hidden">
   <div class="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true"
-       style="background:radial-gradient(900px 400px at 10% 10%,#1d7e62,transparent 60%),radial-gradient(700px 400px at 90% 90%,#2563eb,transparent 60%);"></div>
+       style="background:radial-gradient(900px 400px at 10% 10%,#003366,transparent 60%),radial-gradient(700px 400px at 90% 90%,#d4af37,transparent 60%);"></div>
   <div class="container-x relative">
     <div class="text-center max-w-2xl mx-auto" data-aos="fade-up">
       <p class="section-eyebrow text-brand-300">Voices of trust</p>
       <h2 class="font-display font-extrabold text-3xl sm:text-4xl mt-2">What our PCD partners say</h2>
     </div>
 
-    <div class="grid md:grid-cols-3 gap-6 mt-12">
-      <figure class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur" data-aos="fade-up">
-        <div class="flex gap-1 text-yellow-400 mb-3">★★★★★</div>
-        <blockquote class="text-white/90 leading-relaxed">
-          "We started with Adrijen 2 years ago in Pune. The packaging quality and timely supply have helped us build a loyal doctor base."
-        </blockquote>
-        <figcaption class="mt-4 flex items-center gap-3">
-          <span class="w-10 h-10 rounded-full bg-brand-500 grid place-items-center font-bold">RS</span>
-          <span><span class="block font-semibold">Rakesh Shinde</span><span class="block text-xs text-white/60">PCD Partner, Maharashtra</span></span>
-        </figcaption>
-      </figure>
-      <figure class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur" data-aos="fade-up" data-aos-delay="100">
-        <div class="flex gap-1 text-yellow-400 mb-3">★★★★★</div>
-        <blockquote class="text-white/90 leading-relaxed">
-          "Beautiful visual aids, transparent invoicing and a manager who actually picks up the phone. That's rare in this industry."
-        </blockquote>
-        <figcaption class="mt-4 flex items-center gap-3">
-          <span class="w-10 h-10 rounded-full bg-blue-500 grid place-items-center font-bold">PM</span>
-          <span><span class="block font-semibold">Priya Menon</span><span class="block text-xs text-white/60">Distributor, Kerala</span></span>
-        </figcaption>
-      </figure>
-      <figure class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur" data-aos="fade-up" data-aos-delay="200">
-        <div class="flex gap-1 text-yellow-400 mb-3">★★★★★</div>
-        <blockquote class="text-white/90 leading-relaxed">
-          "Their third-party manufacturing turn-around is excellent. We launched 14 SKUs last year with zero quality complaints."
-        </blockquote>
-        <figcaption class="mt-4 flex items-center gap-3">
-          <span class="w-10 h-10 rounded-full bg-orange-500 grid place-items-center font-bold">AV</span>
-          <span><span class="block font-semibold">Ankit Verma</span><span class="block text-xs text-white/60">Brand Owner, Delhi</span></span>
-        </figcaption>
-      </figure>
+    <div class="testi-carousel mt-12 max-w-5xl mx-auto" data-testi-carousel data-aos="fade-up">
+      <button class="testi-nav prev" aria-label="Previous testimonial"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+      <button class="testi-nav next" aria-label="Next testimonial"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+      <div class="overflow-hidden">
+        <div class="testi-track">
+          <div class="testi-slide">
+            <div class="grid md:grid-cols-3 gap-6">
+              <figure class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur">
+                <div class="flex gap-1 text-gold-500 mb-3">★★★★★</div>
+                <blockquote class="text-white/90 leading-relaxed">
+                  "We started with Adrijen 2 years ago in Pune. The packaging quality and timely supply have helped us build a loyal doctor base."
+                </blockquote>
+                <figcaption class="mt-4 flex items-center gap-3">
+                  <span class="w-10 h-10 rounded-full bg-brand-500 grid place-items-center font-bold">RS</span>
+                  <span><span class="block font-semibold">Rakesh Shinde</span><span class="block text-xs text-white/60">PCD Partner, Maharashtra</span></span>
+                </figcaption>
+              </figure>
+              <figure class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur hidden md:block">
+                <div class="flex gap-1 text-gold-500 mb-3">★★★★★</div>
+                <blockquote class="text-white/90 leading-relaxed">
+                  "Beautiful visual aids, transparent invoicing and a manager who actually picks up the phone. That's rare in this industry."
+                </blockquote>
+                <figcaption class="mt-4 flex items-center gap-3">
+                  <span class="w-10 h-10 rounded-full bg-gold-500 grid place-items-center font-bold">PM</span>
+                  <span><span class="block font-semibold">Priya Menon</span><span class="block text-xs text-white/60">Distributor, Kerala</span></span>
+                </figcaption>
+              </figure>
+              <figure class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur hidden md:block">
+                <div class="flex gap-1 text-gold-500 mb-3">★★★★★</div>
+                <blockquote class="text-white/90 leading-relaxed">
+                  "Their third-party manufacturing turn-around is excellent. We launched 14 SKUs last year with zero quality complaints."
+                </blockquote>
+                <figcaption class="mt-4 flex items-center gap-3">
+                  <span class="w-10 h-10 rounded-full bg-brand-800 grid place-items-center font-bold">AV</span>
+                  <span><span class="block font-semibold">Ankit Verma</span><span class="block text-xs text-white/60">Brand Owner, Delhi</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="testi-slide">
+            <div class="grid md:grid-cols-3 gap-6">
+              <figure class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur">
+                <div class="flex gap-1 text-gold-500 mb-3">★★★★★</div>
+                <blockquote class="text-white/90 leading-relaxed">
+                  "Adrijen's dedicated account manager makes reordering effortless — stock never runs out at our counter."
+                </blockquote>
+                <figcaption class="mt-4 flex items-center gap-3">
+                  <span class="w-10 h-10 rounded-full bg-brand-500 grid place-items-center font-bold">SK</span>
+                  <span><span class="block font-semibold">Sanjay Kulkarni</span><span class="block text-xs text-white/60">Wholesaler, Gujarat</span></span>
+                </figcaption>
+              </figure>
+              <figure class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur hidden md:block">
+                <div class="flex gap-1 text-gold-500 mb-3">★★★★★</div>
+                <blockquote class="text-white/90 leading-relaxed">
+                  "Monopoly rights and genuine marketing support — exactly what a new PCD franchise needs to get going."
+                </blockquote>
+                <figcaption class="mt-4 flex items-center gap-3">
+                  <span class="w-10 h-10 rounded-full bg-gold-500 grid place-items-center font-bold">NR</span>
+                  <span><span class="block font-semibold">Neha Reddy</span><span class="block text-xs text-white/60">PCD Partner, Telangana</span></span>
+                </figcaption>
+              </figure>
+              <figure class="rounded-2xl bg-white/5 border border-white/10 p-6 backdrop-blur hidden md:block">
+                <div class="flex gap-1 text-gold-500 mb-3">★★★★★</div>
+                <blockquote class="text-white/90 leading-relaxed">
+                  "Consistent batch quality and on-time dispatch — two years in, we've never had a supply gap."
+                </blockquote>
+                <figcaption class="mt-4 flex items-center gap-3">
+                  <span class="w-10 h-10 rounded-full bg-brand-800 grid place-items-center font-bold">VJ</span>
+                  <span><span class="block font-semibold">Vikram Joshi</span><span class="block text-xs text-white/60">Distributor, Rajasthan</span></span>
+                </figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="testi-dots" data-testi-dots></div>
     </div>
   </div>
 </section>
@@ -393,7 +456,7 @@
 <!-- ============== CTA ============== -->
 <section class="py-20">
   <div class="container-x">
-    <div class="rounded-[28px] p-10 lg:p-14 bg-gradient-to-br from-brand-600 to-brand-800 text-white relative overflow-hidden" data-aos="zoom-in">
+    <div class="rounded-[28px] p-10 lg:p-14 bg-gradient-to-br from-brand-600 to-brand-800 cta-animated text-white relative overflow-hidden" data-aos="zoom-in">
       <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/10 blur-2xl"></div>
       <div class="grid lg:grid-cols-12 gap-8 items-center relative">
         <div class="lg:col-span-8">
@@ -408,9 +471,17 @@
   </div>
 </section>
 
-<a href="https://wa.me/918909392600?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Adrijen%20Healthcare%27s%20products" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+<a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
   <i data-lucide="message-circle"></i>
+  <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
 </a>
+<button data-back-to-top class="back-to-top" aria-label="Back to top">
+  <i data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>
+<div class="cookie-banner" data-cookie-banner aria-hidden="true">
+  <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
+  <button type="button" class="btn btn-gold" data-cookie-accept>Accept</button>
+</div>
 
 <!-- ============== FOOTER ============== -->
 <footer class="site-footer pt-16">

@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Our Services — PCD Pharma Franchise & Third-Party Manufacturing | Adrijen Healthcare</title>
 <meta name="description" content="Adrijen Healthcare offers PCD pharma franchise opportunities with monopoly rights and third-party contract manufacturing — backed by WHO-GMP quality and pan-India supply." />
-<meta name="theme-color" content="#1d7e62" />
+<meta name="theme-color" content="#003366" />
 <link rel="canonical" href="https://adrijenhealthcare.com/services.html" />
 
 <meta property="og:type" content="website" />
@@ -25,7 +25,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -33,12 +33,13 @@
     theme: {
       extend: {
         colors: {
-          brand: {50:'#effaf6',100:'#d8f2e7',200:'#b3e5d2',300:'#82d1b6',400:'#4cb795',500:'#2a9d7a',600:'#1d7e62',700:'#186551',800:'#155142',900:'#114338'},
-          ink:   {100:'#e6edf2',300:'#8aa1b3',500:'#4a6478',700:'#1f3a4d',900:'#0b1d2a'}
+          brand: {50:'#eef3f8',100:'#d9e4f0',200:'#b3c9e1',300:'#82a6cb',400:'#4d7cae',500:'#2c5990',600:'#1a4372',700:'#003366',800:'#002a54',900:'#001f3d'},
+          gold:  {50:'#fdf8ec',100:'#f9edc9',200:'#f3dd93',300:'#e9c766',400:'#ddb44a',500:'#d4af37',600:'#b8912a',700:'#8f6f20',800:'#6b5318',900:'#4a3910'},
+          ink:   {100:'#e7ebf1',300:'#8b96a8',500:'#4d5b70',700:'#1e2938',900:'#0a121e'}
         },
         fontFamily: {
           sans:    ['Inter','system-ui','sans-serif'],
-          display: ['"Plus Jakarta Sans"','Inter','sans-serif']
+          display: ['"Playfair Display"','Georgia','serif']
         }
       }
     }
@@ -48,9 +49,20 @@
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="stylesheet" href="/css/styles.css" />
+<script src="/js/data/settings.js"></script>
 
 </head>
 <body>
+<div id="loadingScreen" class="loading-screen">
+  <img src="/images/logo.png" alt="Adrijen Healthcare" class="loading-screen-logo" width="72" height="72" />
+  <div class="loading-screen-bar"><span></span></div>
+</div>
+<script>
+  if (sessionStorage.getItem('adrijenLoaded')) {
+    document.documentElement.classList.add('no-loading-screen');
+  }
+</script>
+<div class="scroll-progress"><div class="scroll-progress-bar" data-scroll-progress></div></div>
 <div class="contact-bar">
   <div class="container-x flex flex-wrap items-center justify-between gap-2 py-2 text-sm">
     <span class="flex items-center gap-2 font-medium"><span class="live-dot" aria-hidden="true"></span> Now onboarding distributors — pan-India dispatch active</span>
@@ -75,7 +87,7 @@
       <a class="nav-link" data-nav="contact.html" href="/contact.html">Contact&nbsp;Us</a>
     </nav>
     <div class="flex items-center gap-2">
-      <a href="/contact.html" class="hidden md:inline-flex btn btn-primary">Become a Distributor <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="hidden md:inline-flex btn btn-gold">Get a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       <button id="menuOpen" class="lg:hidden p-2 rounded-xl border border-ink-100" aria-label="Open menu">
         <i data-lucide="menu" class="w-6 h-6 text-ink-900"></i>
       </button>
@@ -96,14 +108,14 @@
     <a href="/careers.html">Career</a>
     <a href="/blog.html">Blog</a>
     <a href="/contact.html">Contact Us</a>
-    <a href="/contact.html" class="btn btn-primary justify-center mt-2">Become a Distributor</a>
+    <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="btn btn-gold justify-center mt-2">Get a Quote</a>
   </div>
 </div>
 <section class="page-banner">
   <div class="container-x">
     <p class="crumbs"><a href="/">Home</a> &nbsp;/&nbsp; <span class="text-ink-900 font-semibold">Our Services</span></p>
-    <h1 class="font-display mt-3" data-aos="fade-up">Two services, one promise — <span class="text-brand-700">quality you can trust.</span></h1>
-    <p class="mt-4 max-w-2xl text-ink-500" data-aos="fade-up" data-aos-delay="80">Whether you want to sell our products under monopoly rights or get your own brand manufactured, Adrijen Healthcare offers a clear, distributor-first service portfolio.</p>
+    <h1 class="font-display mt-3" data-aos="fade-up">Four services, one promise — <span class="text-brand-700">quality you can trust.</span></h1>
+    <p class="mt-4 max-w-2xl text-ink-500" data-aos="fade-up" data-aos-delay="80">Whether you want to sell our products under monopoly rights, expand your existing range, get your own brand manufactured, or need promotional support — Adrijen Healthcare offers a clear, distributor-first service portfolio.</p>
   </div>
 </section>
 
@@ -126,7 +138,7 @@
     </div>
 
     <div class="card feature p-8" data-aos="fade-up" data-aos-delay="100">
-      <span class="pill mb-4" style="background:rgba(37,99,235,.1); color:#1d4ed8; border-color:rgba(37,99,235,.2);"><span class="dot" style="background:#1d4ed8; box-shadow:0 0 0 4px rgba(37,99,235,.18);"></span> For brand owners</span>
+      <span class="pill mb-4" style="background:rgba(212,175,55,.15); color:#8f6f20; border-color:rgba(212,175,55,.3);"><span class="dot" style="background:#d4af37; box-shadow:0 0 0 4px rgba(212,175,55,.22);"></span> For brand owners</span>
       <div class="icon-wrap"><i data-lucide="factory" class="w-7 h-7"></i></div>
       <h2 class="font-display font-extrabold text-2xl text-ink-900">Third-Party Manufacturing</h2>
       <p class="mt-3 text-ink-500">Get any formulation manufactured under your brand name in WHO-GMP certified facilities. From product design and packaging artwork to final dispatch — we handle it end-to-end.</p>
@@ -138,6 +150,34 @@
         <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 mt-0.5"></i> Quick turn-around: 25–35 days</li>
       </ul>
       <a href="/contact.html" class="btn btn-primary mt-6">Get a quote <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    </div>
+
+    <div class="card feature p-8" data-aos="fade-up">
+      <span class="pill mb-4"><span class="dot"></span> For growing partners</span>
+      <div class="icon-wrap"><i data-lucide="trending-up" class="w-7 h-7"></i></div>
+      <h2 class="font-display font-extrabold text-2xl text-ink-900">Product Range Expansion</h2>
+      <p class="mt-3 text-ink-500">Already an Adrijen partner? Add new therapeutic categories to your territory as your business grows — from our full 157-product, 20-category portfolio.</p>
+      <ul class="mt-5 space-y-2 text-ink-700 text-sm">
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 mt-0.5"></i> Add categories without a new agreement</li>
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 mt-0.5"></i> Priority access to new launches</li>
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 mt-0.5"></i> Bundled net rates for multi-category orders</li>
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 mt-0.5"></i> Dedicated account manager guidance</li>
+      </ul>
+      <a href="/contact.html" class="btn btn-primary mt-6">Expand my range <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+    </div>
+
+    <div class="card feature p-8" data-aos="fade-up" data-aos-delay="100">
+      <span class="pill mb-4"><span class="dot"></span> Included with every partnership</span>
+      <div class="icon-wrap"><i data-lucide="megaphone" class="w-7 h-7"></i></div>
+      <h2 class="font-display font-extrabold text-2xl text-ink-900">Marketing &amp; Promotional Support</h2>
+      <p class="mt-3 text-ink-500">Every Adrijen partner launches with a complete, print-ready promotional kit — designed to help your field team convert from day one.</p>
+      <ul class="mt-5 space-y-2 text-ink-700 text-sm">
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 mt-0.5"></i> Visual aids &amp; detailing folders</li>
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 mt-0.5"></i> MR bags, sample kits &amp; leave-behind literature (LBLs)</li>
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 mt-0.5"></i> Product cards, brochures &amp; reminder cards</li>
+        <li class="flex gap-2"><i data-lucide="check-circle-2" class="w-5 h-5 text-brand-600 mt-0.5"></i> Digital assets for WhatsApp &amp; social sharing</li>
+      </ul>
+      <a href="/contact.html" class="btn btn-primary mt-6">See what's included <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
     </div>
   </div>
 </section>
@@ -214,9 +254,17 @@
   </div>
 </section>
 
-<a href="https://wa.me/918909392600?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Adrijen%20Healthcare%27s%20products" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+<a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
   <i data-lucide="message-circle"></i>
+  <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
 </a>
+<button data-back-to-top class="back-to-top" aria-label="Back to top">
+  <i data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>
+<div class="cookie-banner" data-cookie-banner aria-hidden="true">
+  <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
+  <button type="button" class="btn btn-gold" data-cookie-accept>Accept</button>
+</div>
 <footer class="site-footer pt-16">
   <div class="container-x grid md:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>

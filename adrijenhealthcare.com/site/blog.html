@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Blog — Pharma Insights, PCD Tips & Industry News | Adrijen Healthcare</title>
 <meta name="description" content="Read Adrijen Healthcare's blog for insights on PCD pharma franchise, regulatory updates, manufacturing trends and healthcare business tips." />
-<meta name="theme-color" content="#1d7e62" />
+<meta name="theme-color" content="#003366" />
 <link rel="canonical" href="https://adrijenhealthcare.com/blog.html" />
 
 <meta property="og:type" content="website" />
@@ -25,7 +25,7 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Playfair+Display:wght@600;700;800;900&display=swap" rel="stylesheet" />
 
 <script src="https://cdn.tailwindcss.com"></script>
 <script>
@@ -33,12 +33,13 @@
     theme: {
       extend: {
         colors: {
-          brand: {50:'#effaf6',100:'#d8f2e7',200:'#b3e5d2',300:'#82d1b6',400:'#4cb795',500:'#2a9d7a',600:'#1d7e62',700:'#186551',800:'#155142',900:'#114338'},
-          ink:   {100:'#e6edf2',300:'#8aa1b3',500:'#4a6478',700:'#1f3a4d',900:'#0b1d2a'}
+          brand: {50:'#eef3f8',100:'#d9e4f0',200:'#b3c9e1',300:'#82a6cb',400:'#4d7cae',500:'#2c5990',600:'#1a4372',700:'#003366',800:'#002a54',900:'#001f3d'},
+          gold:  {50:'#fdf8ec',100:'#f9edc9',200:'#f3dd93',300:'#e9c766',400:'#ddb44a',500:'#d4af37',600:'#b8912a',700:'#8f6f20',800:'#6b5318',900:'#4a3910'},
+          ink:   {100:'#e7ebf1',300:'#8b96a8',500:'#4d5b70',700:'#1e2938',900:'#0a121e'}
         },
         fontFamily: {
           sans:    ['Inter','system-ui','sans-serif'],
-          display: ['"Plus Jakarta Sans"','Inter','sans-serif']
+          display: ['"Playfair Display"','Georgia','serif']
         }
       }
     }
@@ -48,9 +49,20 @@
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="stylesheet" href="/css/styles.css" />
+<script src="/js/data/settings.js"></script>
 
 </head>
 <body>
+<div id="loadingScreen" class="loading-screen">
+  <img src="/images/logo.png" alt="Adrijen Healthcare" class="loading-screen-logo" width="72" height="72" />
+  <div class="loading-screen-bar"><span></span></div>
+</div>
+<script>
+  if (sessionStorage.getItem('adrijenLoaded')) {
+    document.documentElement.classList.add('no-loading-screen');
+  }
+</script>
+<div class="scroll-progress"><div class="scroll-progress-bar" data-scroll-progress></div></div>
 <div class="contact-bar">
   <div class="container-x flex flex-wrap items-center justify-between gap-2 py-2 text-sm">
     <span class="flex items-center gap-2 font-medium"><span class="live-dot" aria-hidden="true"></span> Now onboarding distributors — pan-India dispatch active</span>
@@ -75,7 +87,7 @@
       <a class="nav-link" data-nav="contact.html" href="/contact.html">Contact&nbsp;Us</a>
     </nav>
     <div class="flex items-center gap-2">
-      <a href="/contact.html" class="hidden md:inline-flex btn btn-primary">Become a Distributor <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+      <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="hidden md:inline-flex btn btn-gold">Get a Quote <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
       <button id="menuOpen" class="lg:hidden p-2 rounded-xl border border-ink-100" aria-label="Open menu">
         <i data-lucide="menu" class="w-6 h-6 text-ink-900"></i>
       </button>
@@ -96,9 +108,23 @@
     <a href="/careers.html">Career</a>
     <a href="/blog.html">Blog</a>
     <a href="/contact.html">Contact Us</a>
-    <a href="/contact.html" class="btn btn-primary justify-center mt-2">Become a Distributor</a>
+    <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="btn btn-gold justify-center mt-2">Get a Quote</a>
   </div>
 </div>
+<script src="/js/data/blogs.js"></script>
+
+<div class="modal-overlay" data-blog-modal aria-hidden="true">
+  <div class="modal-box modal-box--single" role="dialog" aria-modal="true" aria-label="Blog post">
+    <button type="button" class="modal-close" data-blog-modal-close aria-label="Close"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <div class="modal-body modal-body--wide">
+      <span class="text-xs font-bold text-brand-700 uppercase tracking-wider" data-blog-modal-category></span>
+      <h3 class="font-display font-bold text-2xl text-ink-900 mt-1" data-blog-modal-title></h3>
+      <p class="text-xs text-ink-500 mt-2" data-blog-modal-meta></p>
+      <p class="text-sm text-ink-700 mt-4 leading-relaxed" data-blog-modal-content></p>
+    </div>
+  </div>
+</div>
+
 <section class="page-banner">
   <div class="container-x">
     <p class="crumbs"><a href="/">Home</a> &nbsp;/&nbsp; <span class="text-ink-900 font-semibold">Blog</span></p>
@@ -108,112 +134,98 @@
 </section>
 
 <!-- Featured -->
-<section class="py-14">
-  <div class="container-x grid lg:grid-cols-12 gap-8">
-    <article class="lg:col-span-7 post-card" data-aos="fade-up">
-      <div class="cover" style="background:linear-gradient(135deg,#d8f2e7,#dbeafe);">
+<section class="py-14" data-tabs>
+  <div class="container-x">
+    <div class="flex flex-wrap gap-2 justify-center mb-10" data-aos="fade-up">
+      <button class="tab-btn active" data-tab="all">All</button>
+      <button class="tab-btn" data-tab="company-updates">Company Updates</button>
+        <button class="tab-btn" data-tab="regulatory-updates">Regulatory Updates</button>
+        <button class="tab-btn" data-tab="industry-news">Industry News</button>
+        <button class="tab-btn" data-tab="health-tips">Health Tips</button>
+    </div>
+    <div class="grid lg:grid-cols-12 gap-8">
+    <article class="lg:col-span-7 post-card" data-panel="company-updates" data-aos="fade-up" data-blog-id="1">
+      <div class="cover" style="background:linear-gradient(135deg,var(--brand-100),var(--brand-300));">
         <span class="tag">Featured</span>
       </div>
       <div class="p-7">
-        <p class="text-xs uppercase tracking-widest text-brand-700 font-bold">PCD Franchise</p>
+        <p class="text-xs uppercase tracking-widest text-brand-700 font-bold">Company Updates</p>
         <h2 class="font-display font-bold text-2xl text-ink-900 mt-2">How to start a PCD pharma franchise in India: a 2026 step-by-step guide</h2>
         <p class="mt-2 text-ink-500">From drug license requirements to choosing the right pharma company — everything a first-time entrepreneur needs to know.</p>
         <div class="flex items-center gap-3 mt-4 text-sm text-ink-500">
-          <span class="w-8 h-8 rounded-full bg-brand-500 grid place-items-center text-white text-xs font-bold">AK</span>
+          <span class="w-8 h-8 rounded-full bg-brand-700 grid place-items-center text-white text-xs font-bold">AK</span>
           <span>Amit Kapoor</span><span>•</span><span>8 min read</span>
         </div>
+        <button type="button" class="mt-4 text-sm font-semibold text-brand-700 inline-flex items-center gap-1" data-blog-read>Read more <i data-lucide="arrow-right" class="w-4 h-4"></i></button>
       </div>
     </article>
 
-    <div class="lg:col-span-5 grid gap-6">
-      <article class="post-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="cover" style="background:linear-gradient(135deg,#fde68a,#fda4af);"><span class="tag">Regulation</span></div>
+      <div class="lg:col-span-5 grid gap-6">
+      <article class="post-card" data-panel="regulatory-updates" data-aos="fade-up" data-blog-id="2">
+        <div class="cover" style="background:linear-gradient(135deg,var(--gold-100),var(--gold-300));"><span class="tag">Regulatory Updates</span></div>
         <div class="p-5">
           <h3 class="font-display font-bold text-lg text-ink-900">Schedule M revisions: what manufacturers need to action this year</h3>
-          <p class="text-sm text-ink-500 mt-1">A practical breakdown of compliance changes and timelines.</p>
+          <p class="text-sm text-ink-500 mt-1">A practical breakdown of compliance changes and timelines for pharma manufacturers under the revised Schedule M.</p>
+          <button type="button" class="mt-2 text-xs font-semibold text-brand-700 inline-flex items-center gap-1" data-blog-read>Read more <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
         </div>
       </article>
-      <article class="post-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="cover" style="background:linear-gradient(135deg,#bae6fd,#c4b5fd);"><span class="tag">Marketing</span></div>
+      <article class="post-card" data-panel="industry-news" data-aos="fade-up" data-blog-id="3">
+        <div class="cover" style="background:linear-gradient(135deg,var(--brand-50),var(--brand-200));"><span class="tag">Industry News</span></div>
         <div class="p-5">
           <h3 class="font-display font-bold text-lg text-ink-900">Visual aid design that actually converts at the chamber door</h3>
-          <p class="text-sm text-ink-500 mt-1">Five principles for visual aids that prescribers don't ignore.</p>
+          <p class="text-sm text-ink-500 mt-1">Five principles for visual aids that prescribers don&#x27;t ignore.</p>
+          <button type="button" class="mt-2 text-xs font-semibold text-brand-700 inline-flex items-center gap-1" data-blog-read>Read more <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- Latest -->
-<section class="py-14 bg-gradient-to-b from-brand-50/40 to-white">
-  <div class="container-x">
-    <div class="flex flex-wrap items-end justify-between gap-4">
-      <div data-aos="fade-up">
-        <p class="section-eyebrow">Latest articles</p>
-        <h2 class="section-title mt-2">Fresh from the Adrijen blog</h2>
-      </div>
-      <div class="flex flex-wrap gap-2" data-aos="fade-up">
-        <button class="tab-btn active">All</button>
-        <button class="tab-btn">PCD Franchise</button>
-        <button class="tab-btn">Manufacturing</button>
-        <button class="tab-btn">Regulation</button>
-        <button class="tab-btn">Industry News</button>
       </div>
     </div>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-      <article class="post-card" data-aos="fade-up">
-        <div class="cover" style="background:linear-gradient(135deg,#d1fae5,#a7f3d0);"><span class="tag">PCD</span></div>
+      <article class="post-card" data-panel="company-updates" data-aos="fade-up" data-blog-id="4">
+        <div class="cover" style="background:linear-gradient(135deg,var(--brand-100),var(--brand-300));"><span class="tag">Company Updates</span></div>
         <div class="p-5">
           <h3 class="font-display font-bold text-lg text-ink-900">Top 10 mistakes new PCD partners make (and how to avoid them)</h3>
-          <p class="text-sm text-ink-500 mt-1">Learn from the playbook of 850+ Adrijen partners.</p>
+          <p class="text-sm text-ink-500 mt-1">Learn from the playbook of 1,500+ Adrijen partners.</p>
           <p class="mt-3 text-xs text-ink-500">May 02, 2026 • 6 min read</p>
+          <button type="button" class="mt-2 text-xs font-semibold text-brand-700 inline-flex items-center gap-1" data-blog-read>Read more <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
         </div>
       </article>
-      <article class="post-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="cover" style="background:linear-gradient(135deg,#dbeafe,#e0e7ff);"><span class="tag">Manufacturing</span></div>
+      <article class="post-card" data-panel="industry-news" data-aos="fade-up" data-blog-id="5">
+        <div class="cover" style="background:linear-gradient(135deg,var(--brand-50),var(--brand-200));"><span class="tag">Industry News</span></div>
         <div class="p-5">
           <h3 class="font-display font-bold text-lg text-ink-900">Inside a WHO-GMP injectable line: photos &amp; process notes</h3>
           <p class="text-sm text-ink-500 mt-1">A behind-the-scenes look at how sterile injectables are made.</p>
           <p class="mt-3 text-xs text-ink-500">Apr 18, 2026 • 9 min read</p>
+          <button type="button" class="mt-2 text-xs font-semibold text-brand-700 inline-flex items-center gap-1" data-blog-read>Read more <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
         </div>
       </article>
-      <article class="post-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="cover" style="background:linear-gradient(135deg,#fee2e2,#fecaca);"><span class="tag">Regulation</span></div>
+      <article class="post-card" data-panel="regulatory-updates" data-aos="fade-up" data-blog-id="6">
+        <div class="cover" style="background:linear-gradient(135deg,var(--gold-100),var(--gold-300));"><span class="tag">Regulatory Updates</span></div>
         <div class="p-5">
           <h3 class="font-display font-bold text-lg text-ink-900">CDSCO updates: a quarterly digest for PCD entrepreneurs</h3>
           <p class="text-sm text-ink-500 mt-1">Everything that changed in the last quarter, summarised in 5 minutes.</p>
           <p class="mt-3 text-xs text-ink-500">Apr 02, 2026 • 5 min read</p>
+          <button type="button" class="mt-2 text-xs font-semibold text-brand-700 inline-flex items-center gap-1" data-blog-read>Read more <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
         </div>
       </article>
-      <article class="post-card" data-aos="fade-up">
-        <div class="cover" style="background:linear-gradient(135deg,#fef3c7,#fde68a);"><span class="tag">Industry</span></div>
+      <article class="post-card" data-panel="health-tips" data-aos="fade-up" data-blog-id="7">
+        <div class="cover" style="background:linear-gradient(135deg,var(--gold-50),var(--gold-200));"><span class="tag">Health Tips</span></div>
         <div class="p-5">
-          <h3 class="font-display font-bold text-lg text-ink-900">India's nutraceutical boom: what it means for PCD franchises</h3>
+          <h3 class="font-display font-bold text-lg text-ink-900">India&#x27;s nutraceutical boom: what it means for PCD franchises</h3>
           <p class="text-sm text-ink-500 mt-1">A 23% YoY growth segment that no PCD entrepreneur should ignore.</p>
           <p class="mt-3 text-xs text-ink-500">Mar 24, 2026 • 7 min read</p>
+          <button type="button" class="mt-2 text-xs font-semibold text-brand-700 inline-flex items-center gap-1" data-blog-read>Read more <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
         </div>
       </article>
-      <article class="post-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="cover" style="background:linear-gradient(135deg,#ddd6fe,#bfdbfe);"><span class="tag">PCD</span></div>
+      <article class="post-card" data-panel="company-updates" data-aos="fade-up" data-blog-id="8">
+        <div class="cover" style="background:linear-gradient(135deg,var(--brand-100),var(--brand-300));"><span class="tag">Company Updates</span></div>
         <div class="p-5">
           <h3 class="font-display font-bold text-lg text-ink-900">Pricing your products right: margin math for PCD distributors</h3>
           <p class="text-sm text-ink-500 mt-1">A simple framework to set MRPs and net rates that actually work.</p>
           <p class="mt-3 text-xs text-ink-500">Mar 12, 2026 • 8 min read</p>
+          <button type="button" class="mt-2 text-xs font-semibold text-brand-700 inline-flex items-center gap-1" data-blog-read>Read more <i data-lucide="arrow-right" class="w-3 h-3"></i></button>
         </div>
       </article>
-      <article class="post-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="cover" style="background:linear-gradient(135deg,#fbcfe8,#fda4af);"><span class="tag">Branding</span></div>
-        <div class="p-5">
-          <h3 class="font-display font-bold text-lg text-ink-900">Naming your pharma brand: a checklist that works</h3>
-          <p class="text-sm text-ink-500 mt-1">Trademark, pronunciation, regulatory & language considerations.</p>
-          <p class="mt-3 text-xs text-ink-500">Feb 28, 2026 • 6 min read</p>
-        </div>
-      </article>
-    </div>
-
-    <div class="text-center mt-10">
-      <a href="#" class="btn btn-ghost">Load more articles <i data-lucide="arrow-down" class="w-4 h-4"></i></a>
     </div>
   </div>
 </section>
@@ -221,7 +233,7 @@
 <!-- Newsletter -->
 <section class="py-20">
   <div class="container-x">
-    <div class="rounded-[28px] p-10 lg:p-14 bg-gradient-to-br from-brand-600 to-brand-800 text-white relative overflow-hidden" data-aos="zoom-in">
+    <div class="rounded-[28px] p-10 lg:p-14 bg-gradient-to-br from-brand-600 to-brand-800 cta-animated text-white relative overflow-hidden" data-aos="zoom-in">
       <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/10 blur-2xl"></div>
       <div class="grid lg:grid-cols-12 gap-8 items-center relative">
         <div class="lg:col-span-7">
@@ -230,7 +242,7 @@
         </div>
         <form class="lg:col-span-5 flex flex-col sm:flex-row gap-3" data-demo-form>
           <input type="email" required placeholder="you@example.com" class="input bg-white/95 text-ink-900 grow" />
-          <button class="btn bg-white text-brand-800 hover:bg-brand-50">Subscribe</button>
+          <button class="btn btn-gold">Subscribe</button>
           <p class="sm:col-span-2 text-sm text-white font-semibold hidden" data-form-note></p>
         </form>
       </div>
@@ -238,9 +250,17 @@
   </div>
 </section>
 
-<a href="https://wa.me/918909392600?text=Hi%2C%20I%27d%20like%20to%20know%20more%20about%20Adrijen%20Healthcare%27s%20products" target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
+<a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="whatsapp-float" aria-label="Chat with us on WhatsApp">
   <i data-lucide="message-circle"></i>
+  <span class="whatsapp-tooltip">Chat with us on WhatsApp</span>
 </a>
+<button data-back-to-top class="back-to-top" aria-label="Back to top">
+  <i data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>
+<div class="cookie-banner" data-cookie-banner aria-hidden="true">
+  <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
+  <button type="button" class="btn btn-gold" data-cookie-accept>Accept</button>
+</div>
 <footer class="site-footer pt-16">
   <div class="container-x grid md:grid-cols-2 lg:grid-cols-4 gap-10">
     <div>
