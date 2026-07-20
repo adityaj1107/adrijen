@@ -13,6 +13,12 @@ ROOT = Path(__file__).parent
 PAGES_DIR = ROOT / "pages"
 OUT_DIR = ROOT  # write final HTML next to css/, js/
 
+# Bump this after ANY change to css/styles.css, js/*.js or data/*.js.
+# .htaccess caches CSS/JS for a month — without a version query string,
+# browsers (and any CDN in front of the site) will keep serving the old
+# file and your fix will look like it "didn't work" even though it did.
+ASSET_VERSION = "3"
+
 CONTACT = {
     "phone_display": "+91-8909392600",
     "phone_tel": "+918909392600",
@@ -26,6 +32,7 @@ CONTACT = {
     "cin": "U21002PB2003PTC026377",
     "dl_20b": "WLF20B2026HR001104",
     "dl_21b": "WLF21B2026HR001102",
+    "product_list_pdf": "/assets/docs/Adrijen-Product-List.pdf",
     "footer_blurb": (
         "A Panchkula-based PCD pharma company supplying WHO-GMP manufactured "
         "medicines to distributors, wholesalers and chemists across India."
@@ -60,13 +67,50 @@ COOKIE_BANNER = """<div class="cookie-banner" data-cookie-banner aria-hidden="tr
   <button type="button" class="btn btn-gold" data-cookie-accept>Accept</button>
 </div>"""
 
+SIDE_WIDGET = f"""<div class="side-widget" data-side-widget>
+  <a href="tel:{CONTACT['phone_tel']}" class="side-widget-item" aria-label="Call us">
+    <i data-lucide="phone" class="w-5 h-5"></i><span>Call Us</span>
+  </a>
+  <a href="{WHATSAPP_URL}" target="_blank" rel="noopener" class="side-widget-item" aria-label="Chat on WhatsApp">
+    <i data-lucide="message-circle" class="w-5 h-5"></i><span>WhatsApp</span>
+  </a>
+  <a href="{CONTACT['product_list_pdf']}" download class="side-widget-item" aria-label="Download product list PDF">
+    <i data-lucide="download" class="w-5 h-5"></i><span>Download List</span>
+  </a>
+  <button type="button" class="side-widget-item" data-enquiry-open aria-label="Open enquiry form">
+    <i data-lucide="send" class="w-5 h-5"></i><span>Enquiry</span>
+  </button>
+</div>
+
+<div class="enquiry-panel" data-enquiry-panel aria-hidden="true">
+  <div class="enquiry-panel-inner">
+    <button type="button" class="modal-close" data-enquiry-close aria-label="Close enquiry form"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <p class="section-eyebrow">Quick Enquiry</p>
+    <h3 class="font-display font-bold text-xl text-ink-900 mt-1">Tell us what you need.</h3>
+    <p class="text-sm text-ink-500 mt-2">We reply within 24 hours. Pricing is shared on request — it varies by territory and order volume.</p>
+    <form class="grid gap-3 mt-5" data-demo-form>
+      <div><label class="label">Full Name</label><input class="input" required placeholder="Your full name" /></div>
+      <div><label class="label">Phone</label><input class="input" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
+      <div><label class="label">Message</label><textarea class="textarea" rows="3" placeholder="Products, territory, or franchise interest"></textarea></div>
+      <button type="submit" class="btn btn-primary justify-center">Send Enquiry <i data-lucide="send" class="w-4 h-4"></i></button>
+      <p class="text-sm text-brand-700 font-semibold hidden" data-form-note></p>
+    </form>
+  </div>
+</div>
+
+<div class="mobile-action-bar" data-mobile-action-bar>
+  <a href="tel:{CONTACT['phone_tel']}" class="mobile-action-item"><i data-lucide="phone" class="w-5 h-5"></i><span>Call</span></a>
+  <a href="{WHATSAPP_URL}" target="_blank" rel="noopener" class="mobile-action-item"><i data-lucide="message-circle" class="w-5 h-5"></i><span>WhatsApp</span></a>
+  <a href="{CONTACT['product_list_pdf']}" download class="mobile-action-item"><i data-lucide="download" class="w-5 h-5"></i><span>Product List</span></a>
+</div>"""
+
 # ---------- Shared <head> snippet (per-page title/desc/canonical injected) ----------
 HEAD_TEMPLATE = """<meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>{title}</title>
 <meta name="description" content="{description}" />
-<meta name="theme-color" content="#003366" />
+<meta name="theme-color" content="#1b7a5a" />
 <link rel="canonical" href="https://adrijenhealthcare.com{canonical}" />
 
 <meta property="og:type" content="website" />
@@ -93,9 +137,9 @@ HEAD_TEMPLATE = """<meta charset="utf-8" />
     theme: {{
       extend: {{
         colors: {{
-          brand: {{50:'#eef3f8',100:'#d9e4f0',200:'#b3c9e1',300:'#82a6cb',400:'#4d7cae',500:'#2c5990',600:'#1a4372',700:'#003366',800:'#002a54',900:'#001f3d'}},
-          gold:  {{50:'#fdf8ec',100:'#f9edc9',200:'#f3dd93',300:'#e9c766',400:'#ddb44a',500:'#d4af37',600:'#b8912a',700:'#8f6f20',800:'#6b5318',900:'#4a3910'}},
-          ink:   {{100:'#e7ebf1',300:'#8b96a8',500:'#4d5b70',700:'#1e2938',900:'#0a121e'}}
+          brand: {{50:'#eaf5f0',100:'#d1ecdf',200:'#a3d9bf',300:'#75c69f',400:'#469c78',500:'#1b7a5a',600:'#166247',700:'#124e39',800:'#0d3b2c',900:'#0a2b20'}},
+          gold:  {{50:'#fbf4e4',100:'#f5e6bf',200:'#eccf84',300:'#e0b854',400:'#d4a92e',500:'#c9a227',600:'#a8841e',700:'#816418',800:'#5f4912',900:'#42330d'}},
+          ink:   {{100:'#e5ede9',300:'#8fa79c',500:'#4a655a',700:'#1c3a2f',900:'#0f2a22'}}
         }},
         fontFamily: {{
           sans:    ['Inter','system-ui','sans-serif'],
@@ -108,8 +152,8 @@ HEAD_TEMPLATE = """<meta charset="utf-8" />
 
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 <script src="https://unpkg.com/lucide@latest"></script>
-<link rel="stylesheet" href="/css/styles.css" />
-<script src="/js/data/settings.js"></script>
+<link rel="stylesheet" href="/css/styles.css?v={asset_version}" />
+<script src="/data/settings.js?v={asset_version}"></script>
 """
 
 HEADER = f"""<div class="contact-bar">
@@ -186,6 +230,7 @@ FOOTER = f"""<footer class="site-footer pt-16">
         <li><a href="/careers.html">Career</a></li>
         <li><a href="/blog.html">Blog</a></li>
         <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="{CONTACT['product_list_pdf']}" download class="inline-flex items-center gap-1.5 text-gold-300 font-semibold"><i data-lucide="download" class="w-3.5 h-3.5"></i> Download Product List</a></li>
       </ul>
     </div>
     <div>
@@ -215,7 +260,7 @@ FOOTER = f"""<footer class="site-footer pt-16">
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="/js/main.js" defer></script>
+<script src="/js/main.js?v={ASSET_VERSION}" defer></script>
 </body>
 </html>
 """
@@ -232,6 +277,7 @@ def assemble(meta_block: str, body_html: str) -> str:
         title=meta.get("title", "Adrijen Healthcare"),
         description=meta.get("description", ""),
         canonical=meta.get("canonical", "/"),
+        asset_version=ASSET_VERSION,
     )
     return (
         "<!doctype html>\n<html lang=\"en\">\n<head>\n"
@@ -246,6 +292,8 @@ def assemble(meta_block: str, body_html: str) -> str:
         + body_html
         + "\n"
         + WHATSAPP_FLOAT
+        + "\n"
+        + SIDE_WIDGET
         + "\n"
         + COOKIE_BANNER
         + "\n"

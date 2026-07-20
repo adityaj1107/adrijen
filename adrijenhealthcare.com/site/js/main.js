@@ -162,7 +162,17 @@
     const panels  = group.querySelectorAll('[data-panel]');
     const searchInput = group.querySelector('[data-product-search-input]');
     const emptyNote = group.querySelector('[data-product-empty]');
+    const sortSelect = group.querySelector('[data-product-sort]');
+    const grid = panels.length ? panels[0].parentElement : null;
     let activeTab = 'all';
+
+    const applySort = () => {
+      if (!sortSelect || sortSelect.value !== 'az' || !grid) return;
+      const sorted = [...panels].sort((a, b) =>
+        (a.querySelector('h3')?.textContent || '').localeCompare(b.querySelector('h3')?.textContent || '')
+      );
+      sorted.forEach(p => grid.appendChild(p));
+    };
 
     const applyFilters = () => {
       const q = (searchInput && searchInput.value || '').trim().toLowerCase();
@@ -195,6 +205,8 @@
       });
     }
 
+    if (sortSelect) sortSelect.addEventListener('change', applySort);
+
     if (panels.length) applyFilters();
   });
 
@@ -204,13 +216,31 @@
 
   /* ---------- Form (demo) ---------- */
   document.querySelectorAll('[data-demo-form]').forEach(form => {
+    form.querySelectorAll('.input, .textarea, .select').forEach(field => {
+      field.addEventListener('invalid', () => field.classList.add('field-error'));
+      field.addEventListener('input', () => field.classList.remove('field-error'));
+    });
     form.addEventListener('submit', e => {
       e.preventDefault();
       const note = form.querySelector('[data-form-note]');
       const btn  = form.querySelector('button[type="submit"]');
+      if (!form.checkValidity()) {
+        form.querySelectorAll('.input, .textarea, .select').forEach(field => {
+          if (!field.checkValidity()) field.classList.add('field-error');
+        });
+        if (note) {
+          note.textContent = 'Please fill in the required fields highlighted above.';
+          note.classList.remove('hidden');
+          note.classList.add('form-note-error');
+        }
+        const firstInvalid = form.querySelector(':invalid');
+        firstInvalid && firstInvalid.focus();
+        return;
+      }
       if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Sending…'; }
       setTimeout(() => {
         if (note) {
+          note.classList.remove('form-note-error');
           note.textContent = 'Thank you! Our team will get back to you within 24 hours.';
           note.classList.remove('hidden');
         }
@@ -355,6 +385,61 @@
         `Hello Adrijen Healthcare, I'd like to apply for the ${j.title} role (${j.location}).`
       ));
     });
+  }
+
+  /* ---------- Category image grid (Home) ---------- */
+  const catGrid = document.querySelector('[data-category-grid]');
+  if (catGrid && window.CATEGORIES) {
+    // Maps each marketing category (13, matches sister-brand Pykon's structure)
+    // to the real catalogue categories in data/products.js, so counts shown
+    // are genuine — not fabricated — even where naming differs.
+    const COUNT_MAP = {
+      'tablets': ['Tablets', 'Cardio / Diabetic'],
+      'capsules': ['Capsules', 'Ayurvedic Capsules'],
+      'syrups': ['Syrups', 'Dry Syrups', 'Ayurvedic Syrups'],
+      'injections': ['Injections', 'Infusions'],
+      'derma-products': ['Ointments', 'Face Wash & Gels', 'Soaps'],
+      'dental-care': ['Dental Range'],
+      'drops': ['Drops'],
+      'eye-drops': ['Eye / Ear / Nose Drops & Sprays'],
+      'energy-drink-ors': ['Energy Drink / Powder'],
+      'oils': ['Ayurvedic Oils & Powder'],
+      'paediatric': ['Pediatric Syrups & Suspension'],
+      'protein-powder': ['Protein Powder'],
+      'nano-shots-sachets': ['Respules']
+    };
+    const products = window.PRODUCTS || [];
+    const countFor = (slug) => {
+      const cats = COUNT_MAP[slug] || [];
+      return products.filter(p => cats.includes(p.category)).length;
+    };
+    catGrid.innerHTML = window.CATEGORIES.map((c, i) => `
+      <a href="/products.html?category=${c.slug}" class="category-card" data-aos="fade-up" data-aos-delay="${(i % 4) * 40}">
+        <img src="${c.image}" alt="${c.name}" loading="lazy" width="400" height="300" />
+        <div class="category-card-overlay">
+          <h3 class="font-display font-bold">${c.name}</h3>
+          <span class="count">${countFor(c.slug)}+ products</span>
+        </div>
+      </a>
+    `).join('') + `
+      <a href="/products.html" class="category-card view-all" data-aos="fade-up">
+        <i data-lucide="arrow-right"></i>
+        <span>View all categories</span>
+      </a>
+    `;
+    if (window.lucide) lucide.createIcons();
+  }
+
+  /* ---------- Slide-out enquiry panel ---------- */
+  const enquiryPanel = document.querySelector('[data-enquiry-panel]');
+  if (enquiryPanel) {
+    const openBtns = document.querySelectorAll('[data-enquiry-open]');
+    const closeBtn = enquiryPanel.querySelector('[data-enquiry-close]');
+    const open = () => { enquiryPanel.classList.add('open'); enquiryPanel.setAttribute('aria-hidden', 'false'); };
+    const close = () => { enquiryPanel.classList.remove('open'); enquiryPanel.setAttribute('aria-hidden', 'true'); };
+    openBtns.forEach(b => b.addEventListener('click', open));
+    closeBtn && closeBtn.addEventListener('click', close);
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') close(); });
   }
 
   /* ---------- Lucide icons render ---------- */

@@ -48,17 +48,34 @@ canonical: /contact.html
       <div class="card p-8">
         <p class="section-eyebrow">Send enquiry</p>
         <h2 class="section-title mt-2">Request distributor pricing</h2>
-        <p class="mt-2 text-sm text-ink-500">Share your details and product categories of interest. We'll send our latest price list, sample options and onboarding steps.</p>
+        <p class="mt-2 text-sm text-ink-500">Share your details and product categories of interest. We'll send our latest product list, sample options and onboarding steps.</p>
 
         <form class="grid sm:grid-cols-2 gap-4 mt-6" data-demo-form>
           <div><label class="label">Full Name</label><input class="input" required placeholder="Your full name" /></div>
-          <div><label class="label">Mobile</label><input class="input" required type="tel" placeholder="+91 8909392600" /></div>
-          <div><label class="label">City / State</label><input class="input" required placeholder="e.g. Pune, Maharashtra" /></div>
+          <div><label class="label">Email</label><input class="input" type="email" placeholder="you@example.com" /></div>
+          <div><label class="label">Phone</label><input class="input" required type="tel" placeholder="+91 8909392600" /></div>
+          <div><label class="label">Company Name</label><input class="input" placeholder="Your firm / company (if any)" /></div>
+          <div><label class="label">City</label><input class="input" required placeholder="e.g. Pune" /></div>
+          <div><label class="label">State</label><input class="input" required placeholder="e.g. Maharashtra" /></div>
           <div>
-            <label class="label">I am a</label>
+            <label class="label">Do you have a GST number?</label>
+            <div class="flex gap-4 mt-2 text-sm">
+              <label class="flex items-center gap-2"><input type="radio" name="hasGst" value="Yes" /> Yes</label>
+              <label class="flex items-center gap-2"><input type="radio" name="hasGst" value="No" /> No</label>
+            </div>
+          </div>
+          <div>
+            <label class="label">Do you have a Drug Licence?</label>
+            <div class="flex gap-4 mt-2 text-sm">
+              <label class="flex items-center gap-2"><input type="radio" name="hasDl" value="Yes" /> Yes</label>
+              <label class="flex items-center gap-2"><input type="radio" name="hasDl" value="No" /> No</label>
+            </div>
+          </div>
+          <div class="sm:col-span-2">
+            <label class="label">Subject</label>
             <select class="select">
-              <option>Distributor / Wholesaler</option>
-              <option>Retail Chemist</option>
+              <option>Distributor / Wholesaler enquiry</option>
+              <option>Retail Chemist enquiry</option>
               <option>PCD Franchise enquiry</option>
               <option>Third-party Manufacturing</option>
               <option>Hospital / Institution</option>

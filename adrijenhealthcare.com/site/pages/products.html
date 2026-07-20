@@ -3,7 +3,7 @@ title: Our Products — 157 Pharma Formulations across 20 Categories | Adrijen H
 description: Browse Adrijen Healthcare's full pharma portfolio — 157 WHO-GMP manufactured formulations across tablets, capsules, syrups, injections, ayurvedic, derma, dental, ophthalmic and protein ranges.
 canonical: /products.html
 ---
-<script src="/js/data/products.js"></script>
+<script src="/data/products.js?v=3"></script>
 
 <div class="modal-overlay" data-product-modal aria-hidden="true">
   <div class="modal-box" role="dialog" aria-modal="true" aria-label="Product details">
@@ -25,19 +25,28 @@ canonical: /products.html
   <div class="container-x">
     <p class="crumbs"><a href="/">Home</a> &nbsp;/&nbsp; <span class="text-ink-900 font-semibold">Our Products</span></p>
     <h1 class="font-display mt-3" data-aos="fade-up">Everything a distributor needs — <span class="text-brand-700">in one catalogue.</span></h1>
-    <p class="mt-4 max-w-2xl text-ink-500" data-aos="fade-up" data-aos-delay="80">157 formulations across 20 categories, all manufactured in WHO-GMP and ISO 9001:2015 certified facilities. Search by name, or filter by category below — request our full price list for MRP and net rates.</p>
+    <p class="mt-4 max-w-2xl text-ink-500" data-aos="fade-up" data-aos-delay="80">157 formulations across 20 categories, all manufactured in WHO-GMP and ISO 9001:2015 certified facilities. Search by name, or filter by category below. Pricing is shared on enquiry — rates vary by order volume and territory.</p>
+    <a href="/assets/docs/Adrijen-Product-List.pdf" download class="btn btn-gold mt-6" data-aos="fade-up" data-aos-delay="80">
+      Download Product List <i data-lucide="download" class="w-4 h-4"></i>
+      <span class="text-xs font-normal opacity-80">(PDF · 23 KB)</span>
+    </a>
   </div>
 </section>
 
 <!-- Search + Tabs / Filters -->
 <section class="py-14">
   <div class="container-x" data-tabs data-product-search>
-    <div class="max-w-xl mx-auto" data-aos="fade-up">
-      <div class="relative">
+    <div class="max-w-xl mx-auto flex flex-col sm:flex-row gap-3" data-aos="fade-up">
+      <div class="relative grow">
         <i data-lucide="search" class="w-4 h-4 absolute left-4 top-1/2 -translate-y-1/2 text-ink-300"></i>
         <input type="search" class="input pl-11" placeholder="Search products by name or composition&hellip;" data-product-search-input aria-label="Search products" />
       </div>
+      <select class="select sm:w-48" data-product-sort aria-label="Sort products">
+        <option value="default">Sort: Category</option>
+        <option value="az">Sort: A–Z</option>
+      </select>
     </div>
+    <p class="text-center text-xs text-ink-500 mt-3" data-aos="fade-up">Pricing is shared on enquiry — rates vary by order volume and territory.</p>
 
     <div class="flex flex-wrap gap-2 justify-center mt-6" data-aos="fade-up">
       <button class="tab-btn active" data-tab="all">All Products <span class="tab-count">157</span></button>
@@ -63,7 +72,7 @@ canonical: /products.html
       <button class="tab-btn" data-tab="respules">Respules <span class="tab-count">1</span></button>
     </div>
 
-    <p class="text-center text-sm text-ink-500 mt-6 hidden" data-product-empty>No products match your search — <a href="/contact.html" class="text-brand-700 font-semibold underline-offset-4 hover:underline">ask our team directly</a>.</p>
+    <p class="text-center text-sm text-ink-500 mt-6 hidden" data-product-empty>No products match — <a href="/contact.html" class="text-brand-700 font-semibold underline-offset-4 hover:underline">contact us for custom requirements</a>.</p>
 
     <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
       <article class="product-card has-photo" data-panel="tablets" data-search="cephodri - 200dt tab cefpodoxime 200mg dt tab tablets" data-product-id="1">
@@ -2111,7 +2120,7 @@ canonical: /products.html
       </article>
     </div>
 
-    <p class="text-center text-sm text-ink-500 mt-10">Prices, MOQs and monopoly-basis availability are shared on request. <a href="/contact.html" class="text-brand-700 font-semibold underline-offset-4 hover:underline">Request our complete price list &rarr;</a></p>
+    <p class="text-center text-sm text-ink-500 mt-10">Pricing, MOQs and monopoly-basis availability are shared on enquiry. <a href="/assets/docs/Adrijen-Product-List.pdf" download class="text-brand-700 font-semibold underline-offset-4 hover:underline">Download the complete product list (PDF) &rarr;</a></p>
   </div>
 </section>
 
@@ -2131,8 +2140,8 @@ canonical: /products.html
     <div class="rounded-[28px] p-10 lg:p-14 bg-gradient-to-br from-brand-600 to-brand-800 cta-animated text-white relative overflow-hidden" data-aos="zoom-in">
       <div class="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-white/10 blur-2xl"></div>
       <div class="grid lg:grid-cols-12 gap-8 items-center relative">
-        <div class="lg:col-span-8"><h2 class="font-display font-extrabold text-3xl sm:text-4xl">Need our latest price list?</h2><p class="mt-3 text-white/85">Get our complete product catalogue with net rates, MRPs and pack sizes &mdash; sent to your WhatsApp in minutes.</p></div>
-        <div class="lg:col-span-4 flex lg:justify-end gap-3 flex-wrap"><a href="https://wa.me/918909392600?text=Hi%2C%20I%27d%20like%20the%20latest%20Adrijen%20Healthcare%20price%20list" target="_blank" rel="noopener" class="btn bg-white text-brand-800 hover:bg-brand-50">WhatsApp us <i data-lucide="message-circle" class="w-4 h-4"></i></a><a href="/contact.html" class="btn btn-ghost border-white/40 text-white hover:bg-white/10">Send enquiry <i data-lucide="arrow-right" class="w-4 h-4"></i></a></div>
+        <div class="lg:col-span-8"><h2 class="font-display font-extrabold text-3xl sm:text-4xl">Need our full product list?</h2><p class="mt-3 text-white/85">Download our complete catalogue with composition and pack sizes, or WhatsApp us for a quote &mdash; pricing is shared on enquiry.</p></div>
+        <div class="lg:col-span-4 flex lg:justify-end gap-3 flex-wrap"><a href="/assets/docs/Adrijen-Product-List.pdf" download class="btn bg-white text-brand-800 hover:bg-brand-50">Download Product List <i data-lucide="download" class="w-4 h-4"></i></a><a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%27d%20like%20a%20quote%20for%20your%20products." target="_blank" rel="noopener" class="btn btn-ghost border-white/40 text-white hover:bg-white/10">Get a Quote <i data-lucide="message-circle" class="w-4 h-4"></i></a></div>
       </div>
     </div>
   </div>

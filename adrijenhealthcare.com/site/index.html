@@ -7,7 +7,7 @@
 <title>Adrijen Healthcare — PCD Pharma Company & Distributor Partner</title>
 <meta name="description" content="Adrijen Healthcare is a PCD pharma company manufacturing 157 WHO-GMP certified formulations across 20 product categories — supplied directly to distributors, wholesalers and chemists across India." />
 <meta name="keywords" content="PCD pharma company, pharma distributors India, WHO-GMP pharma, third party manufacturing, pharma wholesale supplier, ISO 9001 pharma, Adrijen Healthcare" />
-<meta name="theme-color" content="#003366" />
+<meta name="theme-color" content="#1b7a5a" />
 <link rel="canonical" href="https://adrijenhealthcare.com/" />
 
 <!-- Open Graph -->
@@ -39,16 +39,16 @@
       extend: {
         colors: {
           brand: {
-            50:'#eef3f8',100:'#d9e4f0',200:'#b3c9e1',300:'#82a6cb',
-            400:'#4d7cae',500:'#2c5990',600:'#1a4372',700:'#003366',
-            800:'#002a54',900:'#001f3d'
+            50:'#eaf5f0',100:'#d1ecdf',200:'#a3d9bf',300:'#75c69f',
+            400:'#469c78',500:'#1b7a5a',600:'#166247',700:'#124e39',
+            800:'#0d3b2c',900:'#0a2b20'
           },
           gold: {
-            50:'#fdf8ec',100:'#f9edc9',200:'#f3dd93',300:'#e9c766',
-            400:'#ddb44a',500:'#d4af37',600:'#b8912a',700:'#8f6f20',
-            800:'#6b5318',900:'#4a3910'
+            50:'#fbf4e4',100:'#f5e6bf',200:'#eccf84',300:'#e0b854',
+            400:'#d4a92e',500:'#c9a227',600:'#a8841e',700:'#816418',
+            800:'#5f4912',900:'#42330d'
           },
-          ink: { 100:'#e7ebf1',300:'#8b96a8',500:'#4d5b70',700:'#1e2938',900:'#0a121e' }
+          ink: { 100:'#e5ede9',300:'#8fa79c',500:'#4a655a',700:'#1c3a2f',900:'#0f2a22' }
         },
         fontFamily: {
           sans:    ['Inter','system-ui','sans-serif'],
@@ -66,8 +66,8 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 
 <!-- Site styles -->
-<link rel="stylesheet" href="/css/styles.css" />
-<script src="/js/data/settings.js"></script>
+<link rel="stylesheet" href="/css/styles.css?v=3" />
+<script src="/data/settings.js?v=3"></script>
 
 <!-- JSON-LD -->
 <script type="application/ld+json">
@@ -99,6 +99,32 @@
     "areaServed":"IN",
     "availableLanguage":["en","hi"]
   }
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"LocalBusiness",
+  "name":"Adrijen Healthcare Pvt. Ltd.",
+  "image":"https://adrijenhealthcare.com/images/og.png",
+  "telephone":"+91-8909392600",
+  "email":"md@adrijenhealthcare.com",
+  "priceRange":"Contact for quote",
+  "address":{
+    "@type":"PostalAddress",
+    "streetAddress":"Plot No. 115, Industrial Area Phase-1",
+    "addressLocality":"Panchkula",
+    "addressRegion":"Haryana",
+    "postalCode":"134113",
+    "addressCountry":"IN"
+  },
+  "openingHoursSpecification":{
+    "@type":"OpeningHoursSpecification",
+    "dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"],
+    "opens":"09:00",
+    "closes":"19:00"
+  },
+  "url":"https://adrijenhealthcare.com"
 }
 </script>
 </head>
@@ -171,6 +197,17 @@
   </div>
 </div>
 
+<!-- ============== HERO CAROUSEL ============== -->
+<section class="hero-carousel" data-carousel aria-roledescription="carousel" aria-label="Featured highlights">
+  <div class="hero-carousel-track" data-carousel-track></div>
+  <button type="button" class="carousel-arrow prev" data-carousel-prev aria-label="Previous slide"><i data-lucide="chevron-left" class="w-5 h-5"></i></button>
+  <button type="button" class="carousel-arrow next" data-carousel-next aria-label="Next slide"><i data-lucide="chevron-right" class="w-5 h-5"></i></button>
+  <div class="carousel-dots" data-carousel-dots></div>
+  <div class="carousel-progress"><div class="carousel-progress-bar" data-carousel-progress></div></div>
+</section>
+<script src="/data/slides.js?v=3"></script>
+<script src="/js/carousel.js?v=3"></script>
+
 <!-- ============== HERO ============== -->
 <section class="hero-bg">
   <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
@@ -227,31 +264,28 @@
   </div>
 </section>
 
-<!-- ============== TRUST STRIP ============== -->
-<section class="py-10 border-y border-ink-100 bg-white">
+<!-- ============== CERTIFICATIONS & COMPLIANCE ============== -->
+<section class="py-14 border-y border-ink-100 bg-white">
   <div class="container-x">
-    <p class="text-center text-xs uppercase tracking-[0.2em] text-ink-500 font-semibold mb-6">Certified, audited & trusted by leaders</p>
-    <div class="marquee">
-      <div class="marquee-track">
-        <!-- duplicate set for seamless scroll -->
-        <div class="flex items-center gap-12 opacity-70 grayscale">
-          <span class="font-display font-bold text-ink-700">WHO-GMP</span>
-          <span class="font-display font-bold text-ink-700">ISO 9001:2015</span>
-          <span class="font-display font-bold text-ink-700">DCGI Approved</span>
-          <span class="font-display font-bold text-ink-700">FSSAI</span>
-          <span class="font-display font-bold text-ink-700">GST Registered</span>
-          <span class="font-display font-bold text-ink-700">Schedule M Compliant</span>
-          <span class="font-display font-bold text-ink-700">FDA Audited</span>
-        </div>
-        <div class="flex items-center gap-12 opacity-70 grayscale" aria-hidden="true">
-          <span class="font-display font-bold text-ink-700">WHO-GMP</span>
-          <span class="font-display font-bold text-ink-700">ISO 9001:2015</span>
-          <span class="font-display font-bold text-ink-700">DCGI Approved</span>
-          <span class="font-display font-bold text-ink-700">FSSAI</span>
-          <span class="font-display font-bold text-ink-700">GST Registered</span>
-          <span class="font-display font-bold text-ink-700">Schedule M Compliant</span>
-          <span class="font-display font-bold text-ink-700">FDA Audited</span>
-        </div>
+    <p class="text-center text-xs uppercase tracking-[0.2em] text-ink-500 font-semibold mb-8">Certifications &amp; Compliance</p>
+    <div class="cert-grid">
+      <div class="cert-badge" title="Manufactured in WHO Good Manufacturing Practice certified facilities.">
+        <i data-lucide="shield-check"></i><span>WHO-GMP Certified</span>
+      </div>
+      <div class="cert-badge" title="Certified for consistent, audited quality management systems.">
+        <i data-lucide="badge-check"></i><span>ISO 9001:2015 Certified</span>
+      </div>
+      <div class="cert-badge" title="Approved under Good Manufacturing Practice guidelines for pharmaceutical production.">
+        <i data-lucide="check-circle-2"></i><span>GMP Approved</span>
+      </div>
+      <div class="cert-badge" title="Registered with the Food Safety and Standards Authority of India for eligible product lines.">
+        <i data-lucide="leaf"></i><span>FSSAI Registered</span>
+      </div>
+      <div class="cert-badge" title="Compliant with Drugs Controller General of India regulatory requirements.">
+        <i data-lucide="file-check-2"></i><span>DCGI Compliant</span>
+      </div>
+      <div class="cert-badge" title="Verified supplier — licensed, audited and trusted by 1,500+ distributor partners.">
+        <i data-lucide="award"></i><span>Trust Seal · Verified Supplier</span>
       </div>
     </div>
   </div>
@@ -283,9 +317,9 @@
         <p class="mt-2 text-ink-500">Same-day order confirmation, dispatch in 24–72 hours, and tracking right up to your warehouse.</p>
       </div>
       <div class="card feature" data-tilt data-aos="fade-up">
-        <div class="icon-wrap"><i data-lucide="indian-rupee" class="w-6 h-6"></i></div>
-        <h3 class="font-display font-bold text-lg text-ink-900">Distributor Pricing</h3>
-        <p class="mt-2 text-ink-500">Transparent net rates, healthy slab discounts and credit options for established distributors.</p>
+        <div class="icon-wrap"><i data-lucide="percent" class="w-6 h-6"></i></div>
+        <h3 class="font-display font-bold text-lg text-ink-900">Distributor-Friendly Terms</h3>
+        <p class="mt-2 text-ink-500">Transparent terms, healthy slab discounts and credit options for established distributors — shared on enquiry.</p>
       </div>
       <div class="card feature" data-tilt data-aos="fade-up" data-aos-delay="80">
         <div class="icon-wrap"><i data-lucide="package-check" class="w-6 h-6"></i></div>
@@ -307,26 +341,16 @@
     <div class="flex flex-wrap items-end justify-between gap-6">
       <div data-aos="fade-up">
         <p class="section-eyebrow">Our Range</p>
-        <h2 class="section-title mt-2">20 product categories. <br class="hidden sm:block" /> 157 formulations.</h2>
+        <h2 class="section-title mt-2">A category for every counter. <br class="hidden sm:block" /> 157 formulations, one supplier.</h2>
       </div>
       <a href="/products.html" class="btn btn-ghost" data-aos="fade-up">View full catalogue <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
     </div>
 
-    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 mt-12">
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up"><div class="icon-wrap mx-auto"><i data-lucide="pill" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Tablets</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up" data-aos-delay="40"><div class="icon-wrap mx-auto"><i data-lucide="syringe" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Injections</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up" data-aos-delay="80"><div class="icon-wrap mx-auto"><i data-lucide="capsule" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Capsules</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up" data-aos-delay="120"><div class="icon-wrap mx-auto"><i data-lucide="droplets" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Syrups</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up" data-aos-delay="160"><div class="icon-wrap mx-auto"><i data-lucide="eye" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Eye / Ear / Nose</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up"><div class="icon-wrap mx-auto"><i data-lucide="baby" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Pediatric Syrups</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up" data-aos-delay="40"><div class="icon-wrap mx-auto"><i data-lucide="bandage" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Ointments</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up" data-aos-delay="80"><div class="icon-wrap mx-auto"><i data-lucide="leaf" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Ayurvedic Range</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up" data-aos-delay="120"><div class="icon-wrap mx-auto"><i data-lucide="smile" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Dental Range</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300" data-aos="fade-up" data-aos-delay="160"><div class="icon-wrap mx-auto"><i data-lucide="dumbbell" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-ink-900">Protein Powder</h3></a>
-      <a href="/products.html" class="card text-center hover:border-brand-300 bg-brand-50" data-aos="fade-up"><div class="icon-wrap mx-auto bg-brand-700 text-white border-brand-700"><i data-lucide="arrow-right" class="w-6 h-6"></i></div><h3 class="font-display font-bold text-sm text-brand-700">View all 20 &rarr;</h3></a>
-    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 mt-12" data-category-grid></div>
   </div>
 </section>
+<script src="/data/categories.js?v=3"></script>
+<script src="/data/products.js?v=3"></script>
 
 <!-- ============== SERVICES ============== -->
 <section class="py-20">
@@ -355,7 +379,7 @@
           <div class="icon-wrap shrink-0"><i data-lucide="truck" class="w-6 h-6"></i></div>
           <div>
             <h3 class="font-display font-bold text-ink-900 text-lg">Direct distributor &amp; institutional supply</h3>
-            <p class="mt-1 text-sm text-ink-500">Bulk orders for wholesalers, hospitals, NGOs and government tenders — with tender-friendly packs and competitive net rates.</p>
+            <p class="mt-1 text-sm text-ink-500">Bulk orders for wholesalers, hospitals, NGOs and government tenders — with tender-friendly packs and competitive terms.</p>
           </div>
         </div>
       </div>
@@ -366,7 +390,7 @@
 <!-- ============== TESTIMONIALS ============== -->
 <section class="py-20 bg-ink-900 text-white relative overflow-hidden">
   <div class="absolute inset-0 opacity-30 pointer-events-none" aria-hidden="true"
-       style="background:radial-gradient(900px 400px at 10% 10%,#003366,transparent 60%),radial-gradient(700px 400px at 90% 90%,#d4af37,transparent 60%);"></div>
+       style="background:radial-gradient(900px 400px at 10% 10%,#1b7a5a,transparent 60%),radial-gradient(700px 400px at 90% 90%,#d4af37,transparent 60%);"></div>
   <div class="container-x relative">
     <div class="text-center max-w-2xl mx-auto" data-aos="fade-up">
       <p class="section-eyebrow text-brand-300">Voices of trust</p>
@@ -461,7 +485,7 @@
       <div class="grid lg:grid-cols-12 gap-8 items-center relative">
         <div class="lg:col-span-8">
           <h2 class="font-display font-extrabold text-3xl sm:text-4xl">Stock Adrijen products in your store this month.</h2>
-          <p class="mt-3 text-white/85 max-w-2xl">Get our latest distributor price list, sample products and onboarding kit — share your drug licence and we'll have you live in 7 days.</p>
+          <p class="mt-3 text-white/85 max-w-2xl">Get our complete product list, sample products and onboarding kit — share your drug licence and we'll have you live in 7 days.</p>
         </div>
         <div class="lg:col-span-4 flex lg:justify-end">
           <a href="/contact.html" class="btn bg-white text-brand-800 hover:bg-brand-50">Talk to our team <i data-lucide="phone-call" class="w-4 h-4"></i></a>
@@ -478,6 +502,44 @@
 <button data-back-to-top class="back-to-top" aria-label="Back to top">
   <i data-lucide="arrow-up" class="w-5 h-5"></i>
 </button>
+
+<div class="side-widget" data-side-widget>
+  <a href="tel:+918909392600" class="side-widget-item" aria-label="Call us">
+    <i data-lucide="phone" class="w-5 h-5"></i><span>Call Us</span>
+  </a>
+  <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="side-widget-item" aria-label="Chat on WhatsApp">
+    <i data-lucide="message-circle" class="w-5 h-5"></i><span>WhatsApp</span>
+  </a>
+  <a href="/assets/docs/Adrijen-Product-List.pdf" download class="side-widget-item" aria-label="Download product list PDF">
+    <i data-lucide="download" class="w-5 h-5"></i><span>Download List</span>
+  </a>
+  <button type="button" class="side-widget-item" data-enquiry-open aria-label="Open enquiry form">
+    <i data-lucide="send" class="w-5 h-5"></i><span>Enquiry</span>
+  </button>
+</div>
+
+<div class="enquiry-panel" data-enquiry-panel aria-hidden="true">
+  <div class="enquiry-panel-inner">
+    <button type="button" class="modal-close" data-enquiry-close aria-label="Close enquiry form"><i data-lucide="x" class="w-5 h-5"></i></button>
+    <p class="section-eyebrow">Quick Enquiry</p>
+    <h3 class="font-display font-bold text-xl text-ink-900 mt-1">Tell us what you need.</h3>
+    <p class="text-sm text-ink-500 mt-2">We reply within 24 hours. Pricing is shared on request — it varies by territory and order volume.</p>
+    <form class="grid gap-3 mt-5" data-demo-form>
+      <div><label class="label">Full Name</label><input class="input" required placeholder="Your full name" /></div>
+      <div><label class="label">Phone</label><input class="input" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
+      <div><label class="label">Message</label><textarea class="textarea" rows="3" placeholder="Products, territory, or franchise interest"></textarea></div>
+      <button type="submit" class="btn btn-primary justify-center">Send Enquiry <i data-lucide="send" class="w-4 h-4"></i></button>
+      <p class="text-sm text-brand-700 font-semibold hidden" data-form-note></p>
+    </form>
+  </div>
+</div>
+
+<div class="mobile-action-bar" data-mobile-action-bar>
+  <a href="tel:+918909392600" class="mobile-action-item"><i data-lucide="phone" class="w-5 h-5"></i><span>Call</span></a>
+  <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="mobile-action-item"><i data-lucide="message-circle" class="w-5 h-5"></i><span>WhatsApp</span></a>
+  <a href="/assets/docs/Adrijen-Product-List.pdf" download class="mobile-action-item"><i data-lucide="download" class="w-5 h-5"></i><span>Product List</span></a>
+</div>
+
 <div class="cookie-banner" data-cookie-banner aria-hidden="true">
   <p>We use cookies to improve your experience on our site. By continuing to browse, you agree to our use of cookies.</p>
   <button type="button" class="btn btn-gold" data-cookie-accept>Accept</button>
@@ -509,6 +571,7 @@
         <li><a href="/careers.html">Career</a></li>
         <li><a href="/blog.html">Blog</a></li>
         <li><a href="/contact.html">Contact Us</a></li>
+        <li><a href="/assets/docs/Adrijen-Product-List.pdf" download class="inline-flex items-center gap-1.5 text-gold-300 font-semibold"><i data-lucide="download" class="w-3.5 h-3.5"></i> Download Product List</a></li>
       </ul>
     </div>
     <div>
@@ -539,6 +602,6 @@
 
 <!-- AOS + custom -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="/js/main.js" defer></script>
+<script src="/js/main.js?v=3" defer></script>
 </body>
 </html>
