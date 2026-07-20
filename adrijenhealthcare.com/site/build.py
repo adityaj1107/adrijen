@@ -17,7 +17,7 @@ OUT_DIR = ROOT  # write final HTML next to css/, js/
 # .htaccess caches CSS/JS for a month — without a version query string,
 # browsers (and any CDN in front of the site) will keep serving the old
 # file and your fix will look like it "didn't work" even though it did.
-ASSET_VERSION = "3"
+ASSET_VERSION = "4"
 
 CONTACT = {
     "phone_display": "+91-8909392600",
