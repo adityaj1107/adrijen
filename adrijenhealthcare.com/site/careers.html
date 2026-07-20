@@ -48,8 +48,9 @@
 
 <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
 <script src="https://unpkg.com/lucide@latest"></script>
-<link rel="stylesheet" href="/css/styles.css?v=6" />
-<script src="/data/settings.js?v=6"></script>
+<link rel="stylesheet" href="/css/styles.css?v=7" />
+<script src="/data/settings.js?v=7"></script>
+<script src="/data/google-form.js?v=7"></script>
 
 </head>
 <body>
@@ -111,7 +112,7 @@
     <a href="https://wa.me/918909392600?text=Hello%20Adrijen%20Healthcare%2C%20I%20would%20like%20to%20know%20more%20about%20your%20products%20and%20PCD%20franchise%20opportunities." target="_blank" rel="noopener" class="btn btn-gold justify-center mt-2">Get a Quote</a>
   </div>
 </div>
-<script src="/data/careers.js?v=6"></script>
+<script src="/data/careers.js?v=7"></script>
 <section class="page-banner">
   <div class="container-x">
     <p class="crumbs"><a href="/">Home</a> &nbsp;/&nbsp; <span class="text-ink-900 font-semibold">Career</span></p>
@@ -250,12 +251,13 @@
     </div>
     <div class="lg:col-span-7" data-aos="fade-left">
       <form class="card p-8 grid sm:grid-cols-2 gap-4" data-demo-form>
-        <div><label class="label">Full Name</label><input class="input" required placeholder="Your full name" /></div>
-        <div><label class="label">Email</label><input class="input" required type="email" placeholder="you@example.com" /></div>
-        <div><label class="label">Phone</label><input class="input" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
+        <input type="hidden" name="source" value="Career Application" />
+        <div><label class="label">Full Name</label><input class="input" name="fullName" required placeholder="Your full name" /></div>
+        <div><label class="label">Email</label><input class="input" name="email" required type="email" placeholder="you@example.com" /></div>
+        <div><label class="label">Phone</label><input class="input" name="phone" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
         <div>
           <label class="label">Applying for</label>
-          <select class="select">
+          <select class="select" name="role">
             <option>Area Sales Manager</option>
             <option>QA / QC Officer</option>
             <option>Digital Marketing Lead</option>
@@ -265,9 +267,9 @@
             <option>General application</option>
           </select>
         </div>
-        <div class="sm:col-span-2"><label class="label">Years of Experience</label><input class="input" placeholder="e.g. 3 years" /></div>
-        <div class="sm:col-span-2"><label class="label">Cover note</label><textarea rows="4" class="textarea" placeholder="A few lines about yourself & why you'd like to join Adrijen."></textarea></div>
-        <div class="sm:col-span-2"><label class="label">Upload CV (PDF, max 2 MB)</label><input class="input" type="file" accept=".pdf,.doc,.docx" /></div>
+        <div class="sm:col-span-2"><label class="label">Years of Experience</label><input class="input" name="experience" placeholder="e.g. 3 years" /></div>
+        <div class="sm:col-span-2"><label class="label">Resume Link</label><input class="input" name="resumeLink" type="url" placeholder="Google Drive / LinkedIn / portfolio link" /></div>
+        <div class="sm:col-span-2"><label class="label">Cover note</label><textarea rows="4" class="textarea" name="message" placeholder="A few lines about yourself & why you'd like to join Adrijen."></textarea></div>
         <div class="sm:col-span-2 flex items-center gap-3">
           <button class="btn btn-primary" type="submit">Submit Application <i data-lucide="upload-cloud" class="w-4 h-4"></i></button>
           <span class="text-xs text-ink-500">By applying you agree to our privacy policy.</span>
@@ -307,9 +309,10 @@
     <h3 class="font-display font-bold text-xl text-ink-900 mt-1">Tell us what you need.</h3>
     <p class="text-sm text-ink-500 mt-2">We reply within 24 hours. Pricing is shared on request — it varies by territory and order volume.</p>
     <form class="grid gap-3 mt-5" data-demo-form>
-      <div><label class="label">Full Name</label><input class="input" required placeholder="Your full name" /></div>
-      <div><label class="label">Phone</label><input class="input" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
-      <div><label class="label">Message</label><textarea class="textarea" rows="3" placeholder="Products, territory, or franchise interest"></textarea></div>
+      <input type="hidden" name="source" value="Sticky Enquiry Panel" />
+      <div><label class="label">Full Name</label><input class="input" name="fullName" required placeholder="Your full name" /></div>
+      <div><label class="label">Phone</label><input class="input" name="phone" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
+      <div><label class="label">Message</label><textarea class="textarea" name="message" rows="3" placeholder="Products, territory, or franchise interest"></textarea></div>
       <button type="submit" class="btn btn-primary justify-center">Send Enquiry <i data-lucide="send" class="w-4 h-4"></i></button>
       <p class="text-sm text-brand-700 font-semibold hidden" data-form-note></p>
     </form>
@@ -380,6 +383,6 @@
 </footer>
 
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script src="/js/main.js?v=6" defer></script>
+<script src="/js/main.js?v=7" defer></script>
 </body>
 </html>

@@ -51,12 +51,13 @@ canonical: /contact.html
         <p class="mt-2 text-sm text-ink-500">Share your details and product categories of interest. We'll send our latest product list, sample options and onboarding steps.</p>
 
         <form class="grid sm:grid-cols-2 gap-4 mt-6" data-demo-form>
-          <div><label class="label">Full Name</label><input class="input" required placeholder="Your full name" /></div>
-          <div><label class="label">Email</label><input class="input" type="email" placeholder="you@example.com" /></div>
-          <div><label class="label">Phone</label><input class="input" required type="tel" placeholder="+91 8909392600" /></div>
-          <div><label class="label">Company Name</label><input class="input" placeholder="Your firm / company (if any)" /></div>
-          <div><label class="label">City</label><input class="input" required placeholder="e.g. Pune" /></div>
-          <div><label class="label">State</label><input class="input" required placeholder="e.g. Maharashtra" /></div>
+          <input type="hidden" name="source" value="Contact Page" />
+          <div><label class="label">Full Name</label><input class="input" name="fullName" required placeholder="Your full name" /></div>
+          <div><label class="label">Email</label><input class="input" name="email" type="email" placeholder="you@example.com" /></div>
+          <div><label class="label">Phone</label><input class="input" name="phone" required type="tel" placeholder="+91 8909392600" /></div>
+          <div><label class="label">Company Name</label><input class="input" name="company" placeholder="Your firm / company (if any)" /></div>
+          <div><label class="label">City</label><input class="input" name="city" required placeholder="e.g. Pune" /></div>
+          <div><label class="label">State</label><input class="input" name="state" required placeholder="e.g. Maharashtra" /></div>
           <div>
             <label class="label">Do you have a GST number?</label>
             <div class="flex gap-4 mt-2 text-sm">
@@ -73,7 +74,7 @@ canonical: /contact.html
           </div>
           <div class="sm:col-span-2">
             <label class="label">Subject</label>
-            <select class="select">
+            <select class="select" name="subject">
               <option>Distributor / Wholesaler enquiry</option>
               <option>Retail Chemist enquiry</option>
               <option>PCD Franchise enquiry</option>
@@ -82,7 +83,7 @@ canonical: /contact.html
               <option>General Enquiry</option>
             </select>
           </div>
-          <div class="sm:col-span-2"><label class="label">Message</label><textarea class="textarea" rows="4" placeholder="Mention product categories of interest, expected volumes, or any questions"></textarea></div>
+          <div class="sm:col-span-2"><label class="label">Message</label><textarea class="textarea" name="message" rows="4" placeholder="Mention product categories of interest, expected volumes, or any questions"></textarea></div>
           <div class="sm:col-span-2 flex flex-wrap items-center gap-3">
             <button type="submit" class="btn btn-primary">Send Enquiry <i data-lucide="send" class="w-4 h-4"></i></button>
             <span class="text-xs text-ink-500">We reply within 24 hours.</span>

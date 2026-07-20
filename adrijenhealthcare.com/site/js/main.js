@@ -214,7 +214,32 @@
   const yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---------- Form (demo) ---------- */
+  /* ---------- Forms: validate, then submit to the consolidated Google Form ---------- */
+  const gform = window.GOOGLE_FORM;
+
+  const submitToGoogleForm = (form) => {
+    if (!gform || !gform.actionUrl) return Promise.resolve(); // not configured yet — no-op
+    const entries = gform.entries || {};
+    const params = new URLSearchParams();
+    let hasAny = false;
+    Object.keys(entries).forEach(key => {
+      const entryId = entries[key];
+      if (!entryId) return;
+      const field = form.querySelector(`[name="${key}"]`);
+      if (!field) return;
+      let value = '';
+      if (field.type === 'radio') {
+        const checked = form.querySelector(`[name="${key}"]:checked`);
+        value = checked ? checked.value : '';
+      } else {
+        value = field.value || '';
+      }
+      if (value) { params.append(entryId, value); hasAny = true; }
+    });
+    if (!hasAny) return Promise.resolve();
+    return fetch(gform.actionUrl, { method: 'POST', mode: 'no-cors', body: params }).catch(() => {});
+  };
+
   document.querySelectorAll('[data-demo-form]').forEach(form => {
     form.querySelectorAll('.input, .textarea, .select').forEach(field => {
       field.addEventListener('invalid', () => field.classList.add('field-error'));
@@ -238,7 +263,7 @@
         return;
       }
       if (btn) { btn.disabled = true; btn.dataset.label = btn.textContent; btn.textContent = 'Sending…'; }
-      setTimeout(() => {
+      submitToGoogleForm(form).finally(() => {
         if (note) {
           note.classList.remove('form-note-error');
           note.textContent = 'Thank you! Our team will get back to you within 24 hours.';
@@ -246,7 +271,7 @@
         }
         form.reset();
         if (btn) { btn.disabled = false; btn.textContent = btn.dataset.label || 'Submit'; }
-      }, 900);
+      });
     });
   });
 

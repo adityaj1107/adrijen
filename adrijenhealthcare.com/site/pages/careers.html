@@ -3,7 +3,7 @@ title: Careers — Join Adrijen Healthcare
 description: Build a meaningful career at Adrijen Healthcare. Explore openings in sales, manufacturing, R&D, marketing & operations.
 canonical: /careers.html
 ---
-<script src="/data/careers.js?v=6"></script>
+<script src="/data/careers.js?v=7"></script>
 <section class="page-banner">
   <div class="container-x">
     <p class="crumbs"><a href="/">Home</a> &nbsp;/&nbsp; <span class="text-ink-900 font-semibold">Career</span></p>
@@ -142,12 +142,13 @@ canonical: /careers.html
     </div>
     <div class="lg:col-span-7" data-aos="fade-left">
       <form class="card p-8 grid sm:grid-cols-2 gap-4" data-demo-form>
-        <div><label class="label">Full Name</label><input class="input" required placeholder="Your full name" /></div>
-        <div><label class="label">Email</label><input class="input" required type="email" placeholder="you@example.com" /></div>
-        <div><label class="label">Phone</label><input class="input" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
+        <input type="hidden" name="source" value="Career Application" />
+        <div><label class="label">Full Name</label><input class="input" name="fullName" required placeholder="Your full name" /></div>
+        <div><label class="label">Email</label><input class="input" name="email" required type="email" placeholder="you@example.com" /></div>
+        <div><label class="label">Phone</label><input class="input" name="phone" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
         <div>
           <label class="label">Applying for</label>
-          <select class="select">
+          <select class="select" name="role">
             <option>Area Sales Manager</option>
             <option>QA / QC Officer</option>
             <option>Digital Marketing Lead</option>
@@ -157,9 +158,9 @@ canonical: /careers.html
             <option>General application</option>
           </select>
         </div>
-        <div class="sm:col-span-2"><label class="label">Years of Experience</label><input class="input" placeholder="e.g. 3 years" /></div>
-        <div class="sm:col-span-2"><label class="label">Cover note</label><textarea rows="4" class="textarea" placeholder="A few lines about yourself & why you'd like to join Adrijen."></textarea></div>
-        <div class="sm:col-span-2"><label class="label">Upload CV (PDF, max 2 MB)</label><input class="input" type="file" accept=".pdf,.doc,.docx" /></div>
+        <div class="sm:col-span-2"><label class="label">Years of Experience</label><input class="input" name="experience" placeholder="e.g. 3 years" /></div>
+        <div class="sm:col-span-2"><label class="label">Resume Link</label><input class="input" name="resumeLink" type="url" placeholder="Google Drive / LinkedIn / portfolio link" /></div>
+        <div class="sm:col-span-2"><label class="label">Cover note</label><textarea rows="4" class="textarea" name="message" placeholder="A few lines about yourself & why you'd like to join Adrijen."></textarea></div>
         <div class="sm:col-span-2 flex items-center gap-3">
           <button class="btn btn-primary" type="submit">Submit Application <i data-lucide="upload-cloud" class="w-4 h-4"></i></button>
           <span class="text-xs text-ink-500">By applying you agree to our privacy policy.</span>

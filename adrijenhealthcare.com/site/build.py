@@ -17,7 +17,7 @@ OUT_DIR = ROOT  # write final HTML next to css/, js/
 # .htaccess caches CSS/JS for a month — without a version query string,
 # browsers (and any CDN in front of the site) will keep serving the old
 # file and your fix will look like it "didn't work" even though it did.
-ASSET_VERSION = "6"
+ASSET_VERSION = "7"
 
 CONTACT = {
     "phone_display": "+91-8909392600",
@@ -89,9 +89,10 @@ SIDE_WIDGET = f"""<div class="side-widget" data-side-widget>
     <h3 class="font-display font-bold text-xl text-ink-900 mt-1">Tell us what you need.</h3>
     <p class="text-sm text-ink-500 mt-2">We reply within 24 hours. Pricing is shared on request — it varies by territory and order volume.</p>
     <form class="grid gap-3 mt-5" data-demo-form>
-      <div><label class="label">Full Name</label><input class="input" required placeholder="Your full name" /></div>
-      <div><label class="label">Phone</label><input class="input" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
-      <div><label class="label">Message</label><textarea class="textarea" rows="3" placeholder="Products, territory, or franchise interest"></textarea></div>
+      <input type="hidden" name="source" value="Sticky Enquiry Panel" />
+      <div><label class="label">Full Name</label><input class="input" name="fullName" required placeholder="Your full name" /></div>
+      <div><label class="label">Phone</label><input class="input" name="phone" required type="tel" placeholder="+91 98XXXXXXXX" /></div>
+      <div><label class="label">Message</label><textarea class="textarea" name="message" rows="3" placeholder="Products, territory, or franchise interest"></textarea></div>
       <button type="submit" class="btn btn-primary justify-center">Send Enquiry <i data-lucide="send" class="w-4 h-4"></i></button>
       <p class="text-sm text-brand-700 font-semibold hidden" data-form-note></p>
     </form>
@@ -154,6 +155,7 @@ HEAD_TEMPLATE = """<meta charset="utf-8" />
 <script src="https://unpkg.com/lucide@latest"></script>
 <link rel="stylesheet" href="/css/styles.css?v={asset_version}" />
 <script src="/data/settings.js?v={asset_version}"></script>
+<script src="/data/google-form.js?v={asset_version}"></script>
 """
 
 HEADER = f"""<div class="contact-bar">
