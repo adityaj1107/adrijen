@@ -66,8 +66,7 @@ window.CATEGORIES = [
   {
     name: "Energy Drink / ORS",
     slug: "energy-drink-ors",
-    image: null,
-    icon: "zap",
+    image: "/images/products/glucodri-d-powder.jpg",
     description: "Instant energy and rehydration powders for active patients and recovery care."
   },
   {
