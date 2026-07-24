@@ -43,23 +43,23 @@ window.GOOGLE_FORM = {
   // Paste your form's .../formResponse URL here. Leave blank to disable
   // Google Form submission (forms will still show the on-page "thank you"
   // message, they just won't send anywhere until this is set).
-  actionUrl: "",
+  actionUrl: "https://docs.google.com/forms/d/e/1FAIpQLSeNK36MSgt9wD_58EzU7fKwJtTaAh7GlHLJ4fh5qAcG38Eiaw/formResponse",
 
   // Paste each entry.XXXXXXXXX ID here. Leave any you didn't add as "".
   entries: {
-    source: "",
-    fullName: "",
-    email: "",
-    phone: "",
-    company: "",
-    city: "",
-    state: "",
-    hasGst: "",
-    hasDl: "",
-    subject: "",
-    role: "",
-    experience: "",
-    resumeLink: "",
-    message: ""
+    source: "entry.38996998",
+    fullName: "entry.1898754348",
+    email: "entry.183954726",
+    phone: "entry.400142400",
+    company: "entry.1274289550",
+    city: "entry.1372679016",
+    state: "entry.723706960",
+    hasGst: "entry.393232145",
+    hasDl: "entry.888744865",
+    subject: "entry.580500479",
+    role: "entry.964919302",
+    experience: "entry.1097643987",
+    resumeLink: "entry.294998078",
+    message: "entry.1222455963"
   }
 };
