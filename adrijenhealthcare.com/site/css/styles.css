@@ -659,6 +659,13 @@ body.loading-screen-done .loading-screen { opacity: 0; visibility: hidden; point
   transition: transform .5s cubic-bezier(.22,1,.36,1);
 }
 .category-card:hover img { transform: scale(1.08); }
+.category-card.icon-tile {
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--brand-600), var(--brand-800));
+}
+.category-card.icon-tile i, .category-card.icon-tile svg {
+  width: 25%; height: 25%; color: rgba(255,255,255,.9); stroke-width: 1.4;
+}
 .category-card-overlay {
   position: absolute; inset: 0;
   background: linear-gradient(180deg, rgba(15,42,34,0) 40%, rgba(15,42,34,.88) 100%);
@@ -699,24 +706,23 @@ body.loading-screen-done .loading-screen { opacity: 0; visibility: hidden; point
 /* ---------- Sticky side widget ---------- */
 .side-widget {
   position: fixed; right: 0; bottom: 9rem; z-index: 58;
-  display: flex; flex-direction: column;
+  display: flex; flex-direction: column; width: 168px;
   border-radius: 14px 0 0 14px; overflow: hidden;
   box-shadow: -8px 0 28px -14px rgba(15,42,34,.35);
 }
 .side-widget-item {
   display: flex; align-items: center; gap: .6rem;
   background: var(--brand-800); color: #fff;
-  padding: .85rem; width: 52px; overflow: hidden;
+  padding: .85rem; width: 100%; box-sizing: border-box; overflow: hidden;
   white-space: nowrap;
   border-bottom: 1px solid rgba(255,255,255,.1);
-  transition: width .3s ease, background .2s ease;
+  transition: background .2s ease;
   cursor: pointer; border: 0; font: inherit; text-align: left;
 }
 .side-widget-item:last-child { border-bottom: 0; }
 .side-widget-item svg, .side-widget-item i { flex-shrink: 0; width: 20px; height: 20px; }
-.side-widget-item span { font-size: .82rem; font-weight: 600; opacity: 0; transition: opacity .2s ease; }
-.side-widget-item:hover { width: 168px; background: var(--brand-600); }
-.side-widget-item:hover span { opacity: 1; }
+.side-widget-item span { font-size: .82rem; font-weight: 600; }
+.side-widget-item:hover { background: var(--brand-600); }
 .side-widget-item:nth-child(2):hover { background: #1eab52; }
 /* Matches the header's lg breakpoint (1024px) — below this the nav becomes
    a hamburger menu, so the desktop-only side widget must disappear at the

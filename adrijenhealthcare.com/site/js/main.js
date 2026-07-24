@@ -439,8 +439,10 @@
       return products.filter(p => cats.includes(p.category)).length;
     };
     catGrid.innerHTML = window.CATEGORIES.map((c, i) => `
-      <a href="/products.html?category=${c.slug}" class="category-card" data-aos="fade-up" data-aos-delay="${(i % 4) * 40}">
-        <img src="${c.image}" alt="${c.name}" loading="lazy" width="400" height="300" />
+      <a href="/products.html?category=${c.slug}" class="category-card${c.image ? '' : ' icon-tile'}" data-aos="fade-up" data-aos-delay="${(i % 4) * 40}">
+        ${c.image
+          ? `<img src="${c.image}" alt="${c.name}" loading="lazy" width="400" height="300" />`
+          : `<i data-lucide="${c.icon || 'pill'}"></i>`}
         <div class="category-card-overlay">
           <h3 class="font-display font-bold">${c.name}</h3>
           <span class="count">${countFor(c.slug)}+ products</span>

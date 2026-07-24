@@ -809,7 +809,7 @@ window.PRODUCTS = [
     "icon": "syringe",
     "composition": "PIPERACILLIN + TAZOBACTAM 4.5",
     "pack": "Vial With Water | Tray Pack",
-    "image": null
+    "image": "/images/products/tazodri-4-5-inj.jpg"
   },
   {
     "id": 82,
@@ -1199,7 +1199,7 @@ window.PRODUCTS = [
     "icon": "zap",
     "composition": "INSTANT ENERGY DRINK POWDER (DEXTROSE+MINERALS+VITAMIN C & D3)",
     "pack": "105 Gms With CTN | Box",
-    "image": null
+    "image": "/images/products/glucodri-d-powder.jpg"
   },
   {
     "id": 121,
@@ -1569,6 +1569,6 @@ window.PRODUCTS = [
     "icon": "wind",
     "composition": "BACILLUS CLAUSII SPORES SUS",
     "pack": "10*5 ml With CTN | Bottle",
-    "image": null
+    "image": "/images/products/germinadri-suspension.jpg"
   }
 ];

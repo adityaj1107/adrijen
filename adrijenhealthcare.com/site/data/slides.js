@@ -34,8 +34,8 @@ window.SLIDES = [
     ctaLink: "/services.html"
   },
   {
-    desktopImage: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1600&h=650&fit=crop&q=80&auto=format",
-    mobileImage: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=1000&fit=crop&q=80&auto=format",
+    desktopImage: "https://images.unsplash.com/photo-1577401132921-cb39bb0adcff?w=1600&h=650&fit=crop&q=80&auto=format",
+    mobileImage: "https://images.unsplash.com/photo-1577401132921-cb39bb0adcff?w=800&h=1000&fit=crop&q=80&auto=format",
     eyebrow: "Derma, Dental & More",
     headline: "A range wide enough to cover every counter.",
     subline: "From derma and dental to paediatric and protein — 13 category groups under one supplier.",
@@ -43,8 +43,8 @@ window.SLIDES = [
     ctaLink: "/products.html"
   },
   {
-    desktopImage: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=1600&h=650&fit=crop&q=80&auto=format",
-    mobileImage: "https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&h=1000&fit=crop&q=80&auto=format",
+    desktopImage: "https://images.unsplash.com/photo-1638262052640-82e94d64664a?w=1600&h=650&fit=crop&q=80&auto=format",
+    mobileImage: "https://images.unsplash.com/photo-1638262052640-82e94d64664a?w=800&h=1000&fit=crop&q=80&auto=format",
     eyebrow: "Talk to Our Team",
     headline: "Pricing shared on enquiry — always.",
     subline: "Rates vary by territory and order volume. Tell us what you need and we'll quote it directly.",
