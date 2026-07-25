@@ -214,12 +214,11 @@
   const yr = document.getElementById('year');
   if (yr) yr.textContent = new Date().getFullYear();
 
-  /* ---------- Forms: validate, then submit to the consolidated Google Form ---------- */
-  const gform = window.GOOGLE_FORM;
-
+  /* ---------- Forms: validate, then submit to the matching Google Form ---------- */
   const submitToGoogleForm = (form) => {
-    if (!gform || !gform.actionUrl) return Promise.resolve(); // not configured yet — no-op
-    const entries = gform.entries || {};
+    const target = form.dataset.formTarget === 'career' ? window.GOOGLE_FORM_CAREER : window.GOOGLE_FORM_ENQUIRY;
+    if (!target || !target.actionUrl) return Promise.resolve(); // not configured yet — no-op
+    const entries = target.entries || {};
     const params = new URLSearchParams();
     let hasAny = false;
     Object.keys(entries).forEach(key => {
@@ -237,7 +236,7 @@
       if (value) { params.append(entryId, value); hasAny = true; }
     });
     if (!hasAny) return Promise.resolve();
-    return fetch(gform.actionUrl, { method: 'POST', mode: 'no-cors', body: params }).catch(() => {});
+    return fetch(target.actionUrl, { method: 'POST', mode: 'no-cors', body: params }).catch(() => {});
   };
 
   document.querySelectorAll('[data-demo-form]').forEach(form => {
