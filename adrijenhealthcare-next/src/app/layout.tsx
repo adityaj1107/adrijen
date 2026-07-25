@@ -6,6 +6,9 @@ import { Footer } from "@/components/layout/Footer";
 import { SideActionBar } from "@/components/layout/SideActionBar";
 import { EnquiryDrawer } from "@/components/layout/EnquiryDrawer";
 import { EnquiryProvider } from "@/components/layout/EnquiryContext";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { GoogleAnalytics } from "@/components/shared/GoogleAnalytics";
+import { SITE_SETTINGS } from "@/data/settings";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -64,6 +67,51 @@ export const viewport = {
   themeColor: "#0f4c81",
 };
 
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "@id": "https://adrijenhealthcare.com/#organization",
+  name: "Adrijen Healthcare Pvt. Ltd.",
+  alternateName: "Adrijen Healthcare",
+  url: "https://adrijenhealthcare.com/",
+  logo: "https://adrijenhealthcare.com/images/logo.png",
+  image: "https://adrijenhealthcare.com/images/og.png",
+  description,
+  telephone: SITE_SETTINGS.phoneTel,
+  email: SITE_SETTINGS.email,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Plot No. 115, Industrial Area Phase-1",
+    addressLocality: "Panchkula",
+    addressRegion: "Haryana",
+    postalCode: "134113",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 30.7046,
+    longitude: 76.8547,
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "09:00",
+    closes: "19:00",
+  },
+  sameAs: Object.values(SITE_SETTINGS.social).filter((url) => url && url !== "#"),
+  vatID: SITE_SETTINGS.gst,
+  taxID: SITE_SETTINGS.cin,
+};
+
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": "https://adrijenhealthcare.com/#website",
+  url: "https://adrijenhealthcare.com/",
+  name: "Adrijen Healthcare",
+  publisher: { "@id": "https://adrijenhealthcare.com/#organization" },
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -71,7 +119,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${jakarta.variable} h-full antialiased`}>
+      <head>
+        <JsonLd data={organizationSchema} />
+        <JsonLd data={websiteSchema} />
+      </head>
       <body className="flex min-h-full flex-col font-sans">
+        <GoogleAnalytics />
         <EnquiryProvider>
           <Header />
           <main className="flex-1">{children}</main>

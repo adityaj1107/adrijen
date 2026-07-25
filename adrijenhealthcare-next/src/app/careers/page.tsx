@@ -7,6 +7,7 @@ import { FadeIn } from "@/components/shared/FadeIn";
 import { JOB_OPENINGS } from "@/data/careers";
 import { SITE_SETTINGS, whatsappUrl } from "@/data/settings";
 import { CareerApplicationForm } from "@/components/careers/CareerApplicationForm";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export const metadata: Metadata = {
   title: "Careers — Join Adrijen Healthcare",
@@ -17,9 +18,39 @@ function toPascalCase(kebab: string) {
   return kebab.split("-").map((s) => s.charAt(0).toUpperCase() + s.slice(1)).join("");
 }
 
+const datePosted = new Date().toISOString().slice(0, 10);
+const validThrough = new Date(Date.now() + 90 * 24 * 60 * 60 * 1000).toISOString().slice(0, 10);
+
+const jobPostingSchemas = JOB_OPENINGS.map((job) => ({
+  "@context": "https://schema.org",
+  "@type": "JobPosting",
+  title: job.title,
+  description: job.description,
+  datePosted,
+  validThrough,
+  employmentType: job.type.toUpperCase().includes("FULL") ? "FULL_TIME" : "OTHER",
+  hiringOrganization: {
+    "@type": "Organization",
+    name: "Adrijen Healthcare Pvt. Ltd.",
+    sameAs: "https://adrijenhealthcare.com/",
+  },
+  jobLocation: {
+    "@type": "Place",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: job.location,
+      addressCountry: "IN",
+    },
+  },
+  experienceRequirements: job.experience,
+}));
+
 export default function CareersPage() {
   return (
     <>
+      {jobPostingSchemas.map((schema, i) => (
+        <JsonLd key={i} data={schema} />
+      ))}
       <PageHero
         eyebrow="Careers"
         title="Build your career with Adrijen Healthcare."

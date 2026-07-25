@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { X, Send, CheckCircle2 } from "lucide-react";
 import { useEnquiry } from "./EnquiryContext";
 import { ENQUIRY_FORM, submitToGoogleForm } from "@/data/google-form";
+import { trackLeadEvent } from "@/components/shared/GoogleAnalytics";
 
 export function EnquiryDrawer() {
   const { isOpen, close } = useEnquiry();
@@ -15,6 +16,7 @@ export function EnquiryDrawer() {
     e.preventDefault();
     setStatus("sending");
     await submitToGoogleForm(ENQUIRY_FORM, { ...values, source: "Quick Enquiry Drawer" });
+    trackLeadEvent("enquiry_drawer");
     setStatus("sent");
     setValues({ fullName: "", phone: "", message: "" });
     setTimeout(() => {

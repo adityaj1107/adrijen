@@ -18,6 +18,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/shared/SectionHeading";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { Accordion } from "@/components/shared/Accordion";
+import { JsonLd } from "@/components/shared/JsonLd";
 
 export const metadata: Metadata = {
   title: "Our Services — Adrijen Healthcare",
@@ -130,9 +131,20 @@ const faqs = [
   },
 ];
 
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
 export default function ServicesPage() {
   return (
     <>
+      <JsonLd data={faqSchema} />
       <PageHero
         eyebrow="Our Services"
         title="Four services, one promise — quality you can trust."

@@ -4,6 +4,7 @@ import { useState } from "react";
 import { UploadCloud, CheckCircle2 } from "lucide-react";
 import { JOB_OPENINGS } from "@/data/careers";
 import { CAREER_FORM, submitToGoogleForm } from "@/data/google-form";
+import { trackLeadEvent } from "@/components/shared/GoogleAnalytics";
 
 const roles = [...JOB_OPENINGS.map((j) => j.title), "General application"];
 
@@ -29,6 +30,7 @@ export function CareerApplicationForm() {
     e.preventDefault();
     setStatus("sending");
     await submitToGoogleForm(CAREER_FORM, values);
+    trackLeadEvent("career_application");
     setStatus("sent");
     setValues(initialState);
     setTimeout(() => setStatus("idle"), 5000);

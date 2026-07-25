@@ -6,6 +6,7 @@ import { SectionHeading } from "@/components/shared/SectionHeading";
 import { FadeIn } from "@/components/shared/FadeIn";
 import { SITE_SETTINGS } from "@/data/settings";
 import { ENQUIRY_FORM, submitToGoogleForm } from "@/data/google-form";
+import { trackLeadEvent } from "@/components/shared/GoogleAnalytics";
 
 const subjects = [
   "Distributor / Wholesaler enquiry",
@@ -39,6 +40,7 @@ export function InquirySection() {
     e.preventDefault();
     setStatus("sending");
     await submitToGoogleForm(ENQUIRY_FORM, { ...values, source: "Homepage Inquiry Section" });
+    trackLeadEvent("inquiry_section");
     setStatus("sent");
     setValues(initialState);
     setTimeout(() => setStatus("idle"), 4000);
