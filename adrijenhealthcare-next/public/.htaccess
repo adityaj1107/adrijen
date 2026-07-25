@@ -3,6 +3,15 @@
 # Default index
 DirectoryIndex index.html
 
+# Next.js static export creates a same-named directory next to every route's
+# .html file (e.g. about.html AND an about/ folder holding only internal RSC
+# prefetch payloads, no index.html). Without this, Apache's own mod_dir
+# redirects /about -> /about/ before our rewrite rules below ever run, then
+# 403s because that folder has nothing servable in it.
+<IfModule mod_dir.c>
+  DirectorySlash Off
+</IfModule>
+
 # Force HTTPS (Hostinger SSL recommended)
 <IfModule mod_rewrite.c>
   RewriteEngine On
