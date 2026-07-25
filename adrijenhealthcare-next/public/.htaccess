@@ -11,7 +11,13 @@ DirectoryIndex index.html
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
   # Strip .html for clean URLs (e.g. /about → /about.html)
-  RewriteCond %{REQUEST_FILENAME} !-d
+  # Note: no "!-d" guard here on purpose. Next.js static export creates a
+  # same-named directory next to every route's .html file (e.g. both
+  # about.html and about/ containing only internal RSC prefetch payloads,
+  # no index.html). If we skip this rule whenever that directory exists,
+  # Apache's own DirectorySlash redirect takes over instead, sends /about
+  # to /about/, finds no index.html inside, and 403s. Checking for the
+  # .html file first avoids that trap entirely.
   RewriteCond %{REQUEST_FILENAME}\.html -f
   RewriteRule ^([^.]+)$ $1.html [L]
 
