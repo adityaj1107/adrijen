@@ -456,6 +456,18 @@
     if (window.lucide) lucide.createIcons();
   }
 
+  /* ---------- About: team directory filter ---------- */
+  const teamFilters = document.querySelector('[data-team-filters]');
+  if (teamFilters) {
+    const btns = teamFilters.querySelectorAll('[data-team-filter]');
+    const items = document.querySelectorAll('.team-list [data-team-group]');
+    btns.forEach(btn => btn.addEventListener('click', () => {
+      const groups = btn.dataset.teamFilter.split(' ');
+      btns.forEach(b => b.setAttribute('aria-pressed', String(b === btn)));
+      items.forEach(el => { el.hidden = !(groups.includes('all') || groups.includes(el.dataset.teamGroup)); });
+    }));
+  }
+
   /* ---------- Slide-out enquiry panel ---------- */
   const enquiryPanel = document.querySelector('[data-enquiry-panel]');
   if (enquiryPanel) {
