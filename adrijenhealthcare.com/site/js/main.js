@@ -468,6 +468,13 @@
     }));
   }
 
+  /* ---------- About: protect staff/founder photos from right-click save ---------- */
+  document.querySelectorAll('.founder-photo img, .team-photo').forEach(img => {
+    img.setAttribute('draggable', 'false');
+    img.addEventListener('contextmenu', e => e.preventDefault());
+    img.addEventListener('dragstart', e => e.preventDefault());
+  });
+
   /* ---------- Slide-out enquiry panel ---------- */
   const enquiryPanel = document.querySelector('[data-enquiry-panel]');
   if (enquiryPanel) {

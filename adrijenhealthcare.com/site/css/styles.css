@@ -781,6 +781,12 @@ body.loading-screen-done .loading-screen { opacity: 0; visibility: hidden; point
   background: linear-gradient(145deg, var(--brand-400), var(--brand-700));
 }
 .founder-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.founder-photo img,
+.team-photo {
+  -webkit-user-drag: none; user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none; user-select: none;
+}
 .founder-photo.is-empty { display: grid; place-content: center; text-align: center; color: rgba(255,255,255,.92); }
 .founder-photo .initials { font-family: 'Playfair Display', Georgia, serif; font-weight: 800; font-size: 3.5rem; line-height: 1; }
 .founder-photo .soon { margin-top: .6rem; font-size: .7rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; opacity: .75; }
